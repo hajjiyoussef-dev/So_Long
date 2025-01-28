@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:04:53 by yhajji            #+#    #+#             */
-/*   Updated: 2025/01/28 02:30:24 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/01/28 02:53:25 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int main(int argc, char **argv)
 {
-    t_game *game;
+     t_game *game;
     
     game = malloc(sizeof(t_game));
     ft_pars_argement(argc, argv);
