@@ -6,11 +6,19 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 21:01:51 by yhajji            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/02/01 20:59:23 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+=======
+/*   Updated: 2025/01/26 21:05:39 by yhajji           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long"
+>>>>>>> 6980f356c1dfa740c4ab7ee1149e374a58601c37
 
 
 size_t	ft_strlen(const char *s)
@@ -24,6 +32,7 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
+<<<<<<< HEAD
 char	*ft_strdup(const char *s1)
 {
 	char	*ptr;
@@ -41,6 +50,9 @@ char	*ft_strdup(const char *s1)
 	ptr[i] = '\0';
 	return (ptr);
 }
+=======
+
+>>>>>>> 6980f356c1dfa740c4ab7ee1149e374a58601c37
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
@@ -64,6 +76,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
+<<<<<<< HEAD
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*d;
@@ -113,3 +126,5 @@ char *ft_strappend(char **dest, char *src)
 }
 
 
+=======
+>>>>>>> 6980f356c1dfa740c4ab7ee1149e374a58601c37
