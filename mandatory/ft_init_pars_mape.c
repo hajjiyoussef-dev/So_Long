@@ -6,13 +6,10 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/02/01 22:21:13 by yhajji           ###   ########.fr       */
-=======
-/*   Updated: 2025/01/28 02:26:52 by yhajji           ###   ########.fr       */
->>>>>>> 6980f356c1dfa740c4ab7ee1149e374a58601c37
+/*   Updated: 2025/02/01 23:20:06 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "so_long.h"
 
@@ -31,7 +28,6 @@ void ft_pars_argement(int argc, char **argv)
         ft_error_msg("Map file extention is wrong (It should be .ber)");
 }
 
-<<<<<<< HEAD
 void ft_is_empty(char *map)
 {
     int i;
@@ -86,10 +82,8 @@ void ft_init_mape(char **argv, t_game *game)
     close(map_read);
     ft_is_empty(&map_help);
     
-=======
 
-void ft_init_mape(char **argv, t_game *game)
-{
->>>>>>> 6980f356c1dfa740c4ab7ee1149e374a58601c37
+// void ft_init_mape(char **argv, t_game *game)
+// {
     
-}
+// }
