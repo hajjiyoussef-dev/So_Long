@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/02 21:22:11 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/02 23:43:23 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ void ft_init_game_components(t_game *game)
                 new_collectible->y = i;
                 new_collectible->next = game->collect;
                 game->collect = new_collectible;
+                game->total_collectibles++;
+                
             }
         }   
     }
