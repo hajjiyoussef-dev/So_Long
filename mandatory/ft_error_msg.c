@@ -6,14 +6,14 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:46:28 by yhajji            #+#    #+#             */
-/*   Updated: 2025/01/26 20:50:11 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/02 17:45:07 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
-void ft_error_msg(char *str)
+void ft_error_msg(char *str, t_game *game)
 {
     int i = 0;
 
