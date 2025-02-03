@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/02 23:43:23 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/03 18:05:55 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,49 +107,57 @@ void ft_validate_map(t_game *game)
 
 void ft_init_game_components(t_game *game)
 {
-    int i = 0;
+    int i;
     int j = 0;
     t_collectible *new_collectible;
 
     while (j < game->map.rows)
     {
-        while (i < game->map.cols)
+        i = 0;
+        while (i < ft_strlen(game->map.map[j]))
         {
-            if (game->map.map[i][j] == 'P')
+            if (game->map.map[j][i] == 'P')
             {
-                game->player.x = j;
-                game->player.y = i;
+                game->player.x = i;
+                game->player.y = j;
             }
-            else if (game->map.map[i][j] == 'E')
+            else if (game->map.map[j][i] == 'E')
             {
-                game->exit.x = j;
-                game->exit.y = i;
+                game->exit.x = i;
+                game->exit.y = j;
             }
-            else if (game->map.map[i][j] == 'C')
+            else if (game->map.map[j][i] == 'C')
             {
                new_collectible = malloc(sizeof(t_collectible));
                if (!new_collectible)
                     ft_error_msg("Memory allocation failed for collectible.", game);
-                new_collectible->x = j;
-                new_collectible->y = i;
+                new_collectible->x = i;
+                new_collectible->y = j;
                 new_collectible->next = game->collect;
                 game->collect = new_collectible;
                 game->total_collectibles++;
                 
             }
+            i++;
         }   
+        j++;
     }
 }
 
-void ft_init_mape(char **argv, t_game *game)
+
+
+void ft_init_mape(char *argv, t_game *game)
 {
     int map_read;
     char *map_help;
     char *line_map;
 
-    map_read = open(argv[1], O_RDONLY);
+    //printf("Opening map: %s\n", argv[1]);
+    map_read = open(argv, O_RDONLY);
     if (map_read == -1)
         ft_error_msg("The Map couldn't be opened. Does the Map exist?", game);
+    // else 
+    //     ft_error_msg("open succssfly", game);
     map_help = ft_strdup("");
     game->map.rows = 0;
     while (1)
@@ -162,11 +170,15 @@ void ft_init_mape(char **argv, t_game *game)
         game->map.rows++;
     }
     close(map_read);
-    ft_is_empty(&map_help, game);
-
+    ft_is_empty(map_help, game);
+    if (map_help == NULL || ft_strlen(map_help) == 0)
+        ft_error_msg("The map is empty or invalid.", game);
     game->map.map = ft_split(map_help, '\n');
     free(map_help);
     ft_columns_num(game);
     ft_validate_map(game);
     ft_init_game_components(game);
 }
+
+
+

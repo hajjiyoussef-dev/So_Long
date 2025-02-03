@@ -6,14 +6,14 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:30:06 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/02 17:55:39 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:56:47 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
 	int	i;
 
@@ -88,27 +88,25 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 char *ft_strappend(char **dest, char *src)
 {
-	char *res;
-	int src_len;
-	int dest_len;
-	int i;
-	int j;
+    char *res;
+    int src_len;
+    int dest_len;
 
-	i = 0;
-	j = 0;
-	if (!dest || !src)
-		return (NULL);
-	
-	src_len = ft_strlen(src);
-	dest_len = ft_strlen(dest);
-	
-	res = malloc((src_len + dest_len) + 1 * sizeof(char));
-	if (!res)
-		return (NULL);
-	ft_memcpy(res, *dest, dest_len);
-	ft_memcpy(res, src, src_len);
-	res[dest_len + src_len] = '\0';
-	free(*dest);
-	*dest = res;
-	return(res);
+    if (!dest || !src)
+        return (NULL);
+
+    src_len = ft_strlen(src);
+    dest_len = ft_strlen(*dest);
+
+    res = malloc((src_len + dest_len) + 1);  
+    if (!res)
+        return (NULL);
+
+    ft_memcpy(res, *dest, dest_len);
+    ft_memcpy(res + dest_len, src, src_len);
+
+    res[dest_len + src_len] = '\0';
+    free(*dest);
+    *dest = res;
+    return (res);
 }

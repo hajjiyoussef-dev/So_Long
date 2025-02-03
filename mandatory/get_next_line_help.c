@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   git_next_line_help.c                               :+:      :+:    :+:   */
+/*   get_next_line_help.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 20:19:35 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/02 19:19:47 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:17:26 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 // 	return (ptr);
 // }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy_get_next_line(void *dest, const void *src, size_t n)
 {
 	unsigned char	*d;
 	unsigned char	*s;

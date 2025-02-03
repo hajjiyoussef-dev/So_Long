@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   git_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 20:18:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/01 20:19:03 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:17:36 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	*extract_line(char *res)
 	line = malloc((i + new_line + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
-	ft_memcpy(line, res, (i + new_line));
+	ft_memcpy_get_next_line(line, res, (i + new_line));
 	line[i + new_line] = '\0';
 	return (line);
 }

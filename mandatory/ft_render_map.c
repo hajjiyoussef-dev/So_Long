@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:01:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/02 23:45:49 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/03 18:26:57 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,18 @@ void ft_draw_exit(t_game *game, int x , int y)
         mlx_put_image_to_window(game->mlxptr, game->window, game->exit_closed_img, x *TILE_SIZE, y * TILE_SIZE);
 }
 
+void ft_draw_empty(t_game *game, int x, int y)
+{
+    mlx_put_image_to_window(game->mlxptr, game->window, game->floor_img, x * TILE_SIZE, y * TILE_SIZE);
+}
+
 void    ft_render_map(t_game *game)
 {
     int i = 0;
     int j;
-
+    
+    mlx_clear_window(game->mlxptr, game->window);
+    
     while (i < game->map.rows)
     {
         j = 0;

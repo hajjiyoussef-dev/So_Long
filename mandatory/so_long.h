@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 16:10:26 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/03 18:19:29 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #define COINS_XPM           "files/sprites/coin-bag.xpm"
 #define EXIT_CLOSED_XPM     "files/sprites/exit-closed.xpm"
 #define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
-#define PLAYER_XPM          "files/player/palyer.xpm"
+#define PLAYER_XPM          "files/player/player2.xpm"
 #define FLOOR_XPM           "files/sprites/floor.xpm"
 
 
@@ -83,14 +83,21 @@ typedef struct s_game {
 
 void ft_error_msg(char *str, t_game *game);
 
-size_t	ft_strlen(const char *s);
+int	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char *ft_strappend(char **dest, char *src);
+void	*ft_memcpy_get_next_line(void *dest, const void *src, size_t n);
+char	*ft_strjoin(char *s1, char *s2);
+
+
+
+char	*get_next_line(int fd, int cleanup);
+char	**ft_split(char const *s, char c);
 
 
 void ft_pars_argement(int argc, char **argv, t_game *game);
-void ft_init_mape(char **argv, t_game *game);
+void ft_init_mape(char *argv, t_game *game);
 
 
 void ft_init_mlx(t_game *game);
