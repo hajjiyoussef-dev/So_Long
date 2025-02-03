@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 18:19:29 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/03 23:55:38 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@
 
 #define BUFFER_SIZE 42
 
-#define TILE_SIZE 64
+#define TILE_SIZE 32
 
 
 #define WALL_XPM            "files/sprites/wall.xpm"
 #define COINS_XPM           "files/sprites/coin-bag.xpm"
 #define EXIT_CLOSED_XPM     "files/sprites/exit-closed.xpm"
 #define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
-#define PLAYER_XPM          "files/player/player2.xpm"
-#define FLOOR_XPM           "files/sprites/floor.xpm"
+#define PLAYER_XPM          "files/player/finn.xpm"
+
+#define FLOOR_XPM           "files/sprites/floor2.xpm"
 
 
 typedef struct s_player {
@@ -97,7 +98,7 @@ char	**ft_split(char const *s, char c);
 
 
 void ft_pars_argement(int argc, char **argv, t_game *game);
-void ft_init_mape(char *argv, t_game *game);
+void ft_init_mape(char **argv, t_game *game);
 
 
 void ft_init_mlx(t_game *game);

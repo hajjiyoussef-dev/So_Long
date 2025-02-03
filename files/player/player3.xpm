@@ -1,0 +1,41 @@
+/* XPM */
+static char *player_xpm[] = {
+"32 32 4 1",  /* Width: 32, Height: 32, Colors: 4, Chars per pixel: 1 */
+"  c None",      /* Transparent Background */
+". c #000000",   /* Black (Outline) */
+"o c #FFD700",   /* Gold (Body) */
+"+ c #FF4500",   /* Orange-Red (Hat) */
+"                                ",
+"                                ",
+"           ......               ",
+"           .++++.               ",
+"           .++++.               ",
+"           ......               ",
+"            .oo.                ",
+"            .oo.                ",
+"           .oooo.               ",
+"          .oooooo.              ",
+"          .oooooo.              ",
+"         ..oooooo..             ",
+"         ..oooooo..             ",
+"           .oooo.               ",
+"          ..oooo..              ",
+"          ..oooo..              ",
+"           .oooo.               ",
+"           .oooo.               ",
+"           .oooo.               ",
+"           .oooo.               ",
+"          .oooooo.              ",
+"          .o....o.              ",
+"         .o.    .o.             ",
+"         .o.    .o.             ",
+"         .o.    .o.             ",
+"         .o.    .o.             ",
+"         .o.    .o.             ",
+"         .o.    .o.             ",
+"         .o.    .o.             ",
+"                                ",
+"                                ",
+"                                ",
+"                                "
+};

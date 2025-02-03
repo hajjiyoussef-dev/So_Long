@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:04:53 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 18:31:20 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/03 19:49:48 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void ft_start_game(t_game *game)
 {
     ft_init_mlx(game);
     ft_load_images(game);
+    printf("Rows: %d, Cols: %d\n", game->map.rows, game->map.cols);
     ft_render_map(game);
     mlx_loop(game->mlxptr);
     
@@ -32,7 +33,7 @@ int main(int argc, char **argv)
     game = malloc(sizeof(t_game));
     ft_pars_argement(argc, argv, game);
    // printf("Opening map: %s\n", argv[1]);
-    ft_init_mape("files/maps/valid/map1.ber", game);
+    ft_init_mape(&argv[0], game);
     
     ft_start_game(game);
 

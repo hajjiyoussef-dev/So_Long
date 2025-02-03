@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 18:05:55 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/03 19:39:29 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,14 +146,14 @@ void ft_init_game_components(t_game *game)
 
 
 
-void ft_init_mape(char *argv, t_game *game)
+void ft_init_mape(char **argv, t_game *game)
 {
     int map_read;
     char *map_help;
     char *line_map;
 
     //printf("Opening map: %s\n", argv[1]);
-    map_read = open(argv, O_RDONLY);
+    map_read = open(argv[1], O_RDONLY);
     if (map_read == -1)
         ft_error_msg("The Map couldn't be opened. Does the Map exist?", game);
     // else 
