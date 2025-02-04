@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/04 18:25:47 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/04 18:57:05 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #define TILE_SIZE 32
 
 
-#define WALL_XPM            "files/sprites/wall.xpm"
+#define WALL_XPM            "files/sprites/11zon_pixil-frame-0 (1).xpm"
 #define COINS_XPM           "files/sprites/coin-bag.xpm"
 #define EXIT_CLOSED_XPM     "files/sprites/exit-closed.xpm"
 #define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
