@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:40:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/04 17:24:37 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/04 22:08:29 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,110 @@ int ft_is_valid_characters(t_game *game)
     
 }
 
+void ft_floo_fill(char **map_copy, int x, int y, int rows, int clos)
+{
+    if (x < 0 || y < 0 ||  x >= rows || y >= clos)
+        return ;
+    if (map_copy[x][y] == '1' || map_copy[x][y] == 'F')
+        return ;
+    map_copy[x][y] = 'F';
+    
+    ft_floo_fill(map_copy, x + 1, y, rows, clos); // down
+    ft_floo_fill(map_copy, x - 1, y , rows, clos); // up
+    ft_floo_fill(map_copy, x, y + 1, rows, clos); // right
+    ft_floo_fill(map_copy, x, y - 1, rows, clos); // left
+}
+
+
+int ft_is_valid_path(t_game *game)
+{
+    int i;
+    int j;
+    int k;
+    int player_x;
+    int player_y;
+    char **map_copy;
+
+    i = 0;
+    player_x = -1;
+    player_y = -1;
+    // fprintf(stderr, "hannna");
+    while (i < game->map.rows)
+    {
+        j = 0;
+        while (j < ft_strlen(game->map.map[i]))
+        {
+           if (game->map.map[i][j] == 'P')
+           {
+                // fprintf(stderr, "hannna1");
+                player_x = i;
+                player_y = j;
+                break;
+           }
+           j++;
+        }   
+        i++;
+    }
+    // fprintf(stderr, "hannna3");
+    if (player_x == -1 || player_y == -1)
+        ft_error_msg("Invalid map: No player position found.", game);
+    // fprintf(stderr, "hannna4");
+    map_copy = malloc(sizeof(char *) * (game->map.rows));
+    if (!map_copy)
+        ft_error_msg("Memory allocation failed for map copy.", game);
+    i = 0;
+    j = 0;
+    // fprintf(stderr, "hannna5");
+    while (i < game->map.rows)
+    {
+        map_copy[i] = ft_strdup(game->map.map[i]);
+        if (!map_copy[i])
+            ft_error_msg("Memory allocation failed for row copy.", game);
+        i++;
+    }
+    // fprintf(stderr, "hannna6");
+    ft_floo_fill(map_copy, player_x, player_y, game->map.rows, game->map.cols);
+    // fprintf(stderr, "hannna7");
+    i = 0;
+    j = 0;
+
+    while (i < game->map.rows)
+    {
+        j = 0;
+        while (j < ft_strlen(game->map.map[i]))
+        {
+            if (((game->map.map[i][j] == 'C') || (game->map.map[i][j] == 'E')) && (map_copy[i][j] != 'F'))
+            {
+                if (map_copy[i][j] != 'F')
+                {
+                    // fprintf(stderr, "hannna8");
+                    k = 0;
+                    while (k < game->map.rows)
+                    {
+                        free(map_copy[k]);
+                        k++;
+                    }
+                    free(map_copy);
+                    return (0);
+                }
+            }
+            j++;
+        }
+        i++;
+    }
+    i = 0;
+    // fprintf(stderr, "hannna9");
+    while (i < game->map.rows)
+    {
+        free(map_copy[i]);
+        i++;
+    }
+    free(map_copy);
+    return (1);
+       
+}
+
+
 void ft_validate_map(t_game *game)
 {
     int palyer_count = 0;
@@ -96,17 +200,22 @@ void ft_validate_map(t_game *game)
 
     
     i = 0;
-
+    //  fprintf(stderr, "hannna10");
     if (!ft_IsRectanguler(game))
         ft_error_msg("Invalid map: The map is not rectangular.", game);
+    // fprintf(stderr, "hannna11");
     if (!ft_is_closed_by_walls(game))
         ft_error_msg("Invalid map: The map is not fully enclosed by walls.", game);
+    // fprintf(stderr, "hannna12");
     if (!ft_is_valid_characters(game))
         ft_error_msg("Invalid map: The map contains an invalid character.", game);
+    // fprintf(stderr, "hannna13");
+    if (!ft_is_valid_path(game))
+        ft_error_msg("Invalid map: No valid path exists between player, collectibles, and exit.", game);
     while (i < game->map.rows)
     {
         j = 0;
-        while (j < game->map.cols)
+        while (j < ft_strlen(game->map.map[i]))
         {
             if (game->map.map[i][j] == 'P')
                 palyer_count++;
