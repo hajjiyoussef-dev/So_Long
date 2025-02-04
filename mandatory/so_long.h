@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 23:55:38 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/04 18:25:47 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@
 #define COINS_XPM           "files/sprites/coin-bag.xpm"
 #define EXIT_CLOSED_XPM     "files/sprites/exit-closed.xpm"
 #define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
-#define PLAYER_XPM          "files/player/finn.xpm"
+#define PLAYER_XPM          "files/player/11zon_pixil-frame-0.xpm"
 
-#define FLOOR_XPM           "files/sprites/floor2.xpm"
+#define FLOOR_XPM           "files/sprites/floor.xpm"
 
 
 typedef struct s_player {
@@ -99,6 +99,7 @@ char	**ft_split(char const *s, char c);
 
 void ft_pars_argement(int argc, char **argv, t_game *game);
 void ft_init_mape(char **argv, t_game *game);
+void ft_validate_map(t_game *game);
 
 
 void ft_init_mlx(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 19:39:29 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/04 17:02:56 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,39 +71,7 @@ void ft_columns_num(t_game *game)
 }
 
 
-void ft_validate_map(t_game *game)
-{
-    int palyer_count = 0;
-    int exit_count = 0;
-    int colle_count = 0;
-    int i;
-    int j;
 
-
-    
-    i = 0;
-    while (i < game->map.rows)
-    {
-        j = 0;
-        while (j < game->map.cols)
-        {
-            if (game->map.map[i][j] == 'P')
-                palyer_count++;
-            else if (game->map.map[i][j] == 'C')
-                colle_count++;
-            else if (game->map.map[i][j] == 'E')
-                exit_count++;
-            j++;
-        }
-        i++;
-    }
-    if (palyer_count != 1)
-        ft_error_msg("Invalid map: There should be exactly one player :(", game);
-    if (exit_count != 1)
-        ft_error_msg("Invalid map: There should be exactly one exit :(", game);
-    if (colle_count < 1)
-        ft_error_msg("Invalid map: There should be at least one collectible :(", game);
-}
 
 void ft_init_game_components(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:38:33 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 20:42:48 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/04 17:37:53 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@ void ft_init_mlx(t_game *game)
 
 void ft_load_images(t_game *game)
 {
-    int img_withe = TILE_SIZE;
+    int img_withe = TILE_SIZE; 
     int img_height = TILE_SIZE;
 
+    // void *(*p)(char *a, char *b, int *c, int *d);
+    
+    // p = &mlx_xpm_file_to_image;
+    
+    // game->wall_img = p(game->mlxptr, WALL_XPM, &img_withe, &img_height);
     game->wall_img = mlx_xpm_file_to_image(game->mlxptr, WALL_XPM, &img_withe, &img_height);
     // if (!game->wall_img)
     //     ft_error_msg("Failed to load image wall.", game);  
@@ -62,4 +67,7 @@ void ft_load_images(t_game *game)
         printf("Images loaded successfully\n");
     }  
 }
+
+
+
 
