@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:04:53 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/04 17:07:08 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/05 16:13:52 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void ft_start_game(t_game *game)
     // printf("Rows: %d, Cols: %d\n", game->map.rows, game->map.cols);
     ft_render_map(game);
     mlx_loop(game->mlxptr);
+    // mlx_hook(game->window, 2, 0)
     
 }
 
