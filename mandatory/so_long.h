@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/06 19:46:55 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/06 23:32:11 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,7 @@
 
 #define TILE_SIZE 32
 
-//ubuntu
-#define ESC_KEY     65307  // Escape key
-#define W_KEY       119    // W key
-#define S_KEY       115    // S key
-#define A_KEY       97     // A key
-#define D_KEY       100    // D key
-#define UP_ARROW    65362  // Up arrow key
-#define DOWN_ARROW  65364  // Down arrow key
-#define LEFT_ARROW  65361  // Left arrow key
-#define RIGHT_ARROW 65363  //
 
-//wind
-// #define ESC_KEY     0x1B  // Escape key
-// #define W_KEY       0x57  // W key
-// #define S_KEY       0x53  // S key
-// #define A_KEY       0x41  // A key
-// #define D_KEY       0x44  // D key
-// #define UP_ARROW    0x26  // Up arrow key
-// #define DOWN_ARROW  0x28  // Down arrow key
-// #define LEFT_ARROW  0x25  // Left arrow key
-// #define RIGHT_ARROW 0x27  // Right arrow key
-
-//imac ios
 // #define ESC_KEY     9
 // #define W_KEY       25
 // #define S_KEY       39
@@ -60,6 +38,15 @@
 // #define LEFT_ARROW  113
 // #define RIGHT_ARROW 114
 
+#define ESC_KEY     65307  // Escape key
+#define W_KEY       119    // W key
+#define S_KEY       115    // S key
+#define A_KEY       97     // A key
+#define D_KEY       100    // D key
+#define UP_ARROW    65362  // Up arrow key
+#define DOWN_ARROW  65364  // Down arrow key
+#define LEFT_ARROW  65361  // Left arrow key
+#define RIGHT_ARROW 65363  //
 
 #define WALL_XPM            "files/sprites/11zon_pixil-frame-0 (1).xpm"
 #define COINS_XPM           "files/sprites/coin-bag.xpm"
@@ -92,6 +79,12 @@ typedef struct s_map {
     int cols;
 }   t_map;
 
+typedef struct s_over_it{
+    char over_it;
+    int x;
+    int y;
+} t_over_it;
+
 
 typedef struct s_game {
     void *mlxptr;
@@ -105,7 +98,9 @@ typedef struct s_game {
     
     int collected;          
     int total_collectibles; 
-    int moves;              
+    int moves;
+    t_over_it over_it;    
+    //char over_it;      
 
     t_map map;
     t_collectible *collect;
@@ -142,7 +137,6 @@ void    ft_render_map(t_game *game);
 
 int ft_handel_keypress(int keycode, t_game *game);
 int ft_exit_game(t_game *game);
-
 
 
 #endif
