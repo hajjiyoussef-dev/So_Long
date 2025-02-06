@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/04 17:02:56 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:09:40 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void ft_init_game_components(t_game *game)
         {
             if (game->map.map[j][i] == 'P')
             {
-                game->player.x = i;
-                game->player.y = j;
+                game->player.x = j;
+                game->player.y = i;
             }
             else if (game->map.map[j][i] == 'E')
             {

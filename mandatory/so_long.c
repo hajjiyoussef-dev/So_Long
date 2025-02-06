@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:04:53 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/05 16:13:52 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:27:41 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void ft_start_game(t_game *game)
     ft_load_images(game);
     // printf("Rows: %d, Cols: %d\n", game->map.rows, game->map.cols);
     ft_render_map(game);
-    mlx_loop(game->mlxptr);
-    // mlx_hook(game->window, 2, 0)
+    mlx_hook(game->window, 2, 1L << 0, ft_handel_keypress, game);
+    mlx_hook(game->window, 17, 0, ft_exit_game, game);
     
+    mlx_loop(game->mlxptr);
 }
 
 
