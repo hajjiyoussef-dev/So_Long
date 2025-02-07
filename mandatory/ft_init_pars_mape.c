@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/07 23:24:10 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/08 00:33:40 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void ft_init_game_components(t_game *game)
     int j = 0;
     t_collectible *new_collectible;
 
-    game->collect = NULL;
     while (j < game->map.rows)
     {
         i = 0;
@@ -106,7 +105,6 @@ void ft_init_game_components(t_game *game)
         }   
         j++;
     }
-    game->moves = 0;
 }
 
 
@@ -135,7 +133,6 @@ void ft_init_mape(char **argv, t_game *game)
     ft_is_empty(map_help, game);
     if (map_help == NULL || ft_strlen(map_help) == 0)
         ft_error_msg("The map is empty or invalid.", game);
-    game->map.map = NULL;
     game->map.map = ft_split(map_help, '\n');
     free(map_help);
     ft_columns_num(game);

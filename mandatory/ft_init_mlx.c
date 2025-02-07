@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:38:33 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/07 16:05:39 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/07 23:38:08 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ void ft_load_images(t_game *game)
     game->floor_img = mlx_xpm_file_to_image(game->mlxptr, FLOOR_XPM, &img_withe, &img_height);
     if (!game->wall_img || !game->player_img || !game->exit_closed_img || !game->exit_open_img || !game->collect_img || !game->floor_img) {
         ft_error_msg("Failed to load images.", game);
-    } else {
-        printf("Images loaded successfully\n");
-    }  
+    }
 }
 
 
