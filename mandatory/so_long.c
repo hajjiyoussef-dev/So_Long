@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:04:53 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/06 21:54:31 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/07 21:19:22 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,15 @@ void ft_start_game(t_game *game)
 
 int main(int argc, char **argv)
 {
-     t_game *game;
+    t_game *game;
     
     game = malloc(sizeof(t_game));
+    game->player.x = 0;
+    game->player.y = 0;
+    game->exit.x = 0;
+    game->exit.y = 0;
     ft_pars_argement(argc, argv, game);
-   // printf("Opening map: %s\n", argv[1]);
     ft_init_mape(&argv[0], game);
-    
     ft_start_game(game);
-
-
-
     return (0);
 }

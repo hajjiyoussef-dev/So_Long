@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/06 23:32:11 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/07 22:54:13 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,25 @@
 
 #define BUFFER_SIZE 42
 
-#define TILE_SIZE 32
+#define TILE_SIZE 64
 
 
-// #define ESC_KEY     9
-// #define W_KEY       25
-// #define S_KEY       39
-// #define A_KEY       38
-// #define D_KEY       40
-// #define UP_ARROW    111
-// #define DOWN_ARROW  116
-// #define LEFT_ARROW  113
-// #define RIGHT_ARROW 114
 
-#define ESC_KEY     65307  // Escape key
-#define W_KEY       119    // W key
-#define S_KEY       115    // S key
-#define A_KEY       97     // A key
-#define D_KEY       100    // D key
-#define UP_ARROW    65362  // Up arrow key
-#define DOWN_ARROW  65364  // Down arrow key
-#define LEFT_ARROW  65361  // Left arrow key
-#define RIGHT_ARROW 65363  //
+#define ESC_KEY     65307  
+#define W_KEY       119   
+#define S_KEY       115   
+#define A_KEY       97    
+#define D_KEY       100   
+#define UP_ARROW    65362  
+#define DOWN_ARROW  65364  
+#define LEFT_ARROW  65361  
+#define RIGHT_ARROW 65363  
 
-#define WALL_XPM            "files/sprites/11zon_pixil-frame-0 (1).xpm"
-#define COINS_XPM           "files/sprites/coin-bag.xpm"
-#define EXIT_CLOSED_XPM     "files/sprites/exit-closed.xpm"
+#define WALL_XPM            "files/sprites/wall.xpm"
+#define COINS_XPM           "files/sprites/coins_bag.xpm"
+#define EXIT_CLOSED_XPM     "files/sprites/close_exit.xpm"
 #define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
-#define PLAYER_XPM          "files/player/11zon_pixil-frame-0.xpm"
-
+#define PLAYER_XPM          "files/player/finn.xpm"
 #define FLOOR_XPM           "files/sprites/floor.xpm"
 
 
@@ -95,13 +85,11 @@ typedef struct s_game {
     void *exit_closed_img; 
     void *collect_img;
     void *floor_img;
-    
     int collected;          
     int total_collectibles; 
     int moves;
-    t_over_it over_it;    
-    //char over_it;      
-
+    
+    t_over_it over_it;          
     t_map map;
     t_collectible *collect;
     t_player player;
@@ -119,24 +107,21 @@ char *ft_strappend(char **dest, char *src);
 void	*ft_memcpy_get_next_line(void *dest, const void *src, size_t n);
 char	*ft_strjoin(char *s1, char *s2);
 
-
-
 char	*get_next_line(int fd, int cleanup);
 char	**ft_split(char const *s, char c);
-
 
 void ft_pars_argement(int argc, char **argv, t_game *game);
 void ft_init_mape(char **argv, t_game *game);
 void ft_validate_map(t_game *game);
 
-
 void ft_init_mlx(t_game *game);
 void ft_load_images(t_game *game);
 void    ft_render_map(t_game *game);
 
-
 int ft_handel_keypress(int keycode, t_game *game);
 int ft_exit_game(t_game *game);
+
+void ft_mlxfree(t_game *game);
 
 
 #endif

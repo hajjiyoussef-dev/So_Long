@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:54:31 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/07 00:03:52 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/07 20:58:33 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,40 @@
 int ft_exit_game(t_game *game)
 {
     int i;
+    t_collectible *help;
 
     i = 0;
-    printf("\n🎉 Congratulations! You won the game in %d moves! 🎉\n", game->moves);
-    printf("Thanks for playing! 👏\n");
-    while (i < game->map.rows)
+    // printf("\n🎉 Congratulations! You won the game in %d moves! 🎉\n", game->moves);
+    // printf("Thanks for playing! 👏\n");
+    if (game->map.map)
     {
-        free(game->map.map[i]);
-        i++;
+        while (i < game->map.rows)
+        {
+            free(game->map.map[i]);
+            i++;
+        }
+        free(game->map.map);
+        
     }
-    free(game->map.map);
     
-    if (game->mlxptr && game->window)
-        mlx_destroy_window(game->mlxptr, game->window);
-    // printf("game over %d\n", game->moves);
-    //ft_error_msg("")
+    i  = 0;
+    while (game->collect)
+    {
+        help = game->collect;
+        game->collect = game->collect->next;
+        free(help);
+    }
+    ft_mlxfree(game);
+    free(game);
 
     exit(0);
     
 }
 void ft_call_over_it(t_game *game, int x, int y)
 {
+    game->over_it.over_it = '0';
+    game->over_it.x = -1;
+    game->over_it.y = -1;
     game->over_it.over_it = 'Q';
     game->over_it.x = x;
     game->over_it.y = y;
@@ -57,7 +70,7 @@ void ft_call_render_map(t_game *game, int x, int y)
      if (game->over_it.over_it == 'Q')
     {
         game->map.map[game->over_it.x][game->over_it.y] = 'E';
-        game->over_it.over_it = 'P';
+        game->over_it.over_it = '0';
     }
     game->map.map[game->player.x][game->player.y] = 'P';
     game->moves++;
@@ -67,7 +80,9 @@ void ft_call_render_map(t_game *game, int x, int y)
 }
 
 void ft_move_player(t_game *game, int x, int y)
-{    
+{
+    if (x < 0 ||  x >= game->map.rows || y < 0 || y >= game->map.cols)
+        return ;
     if (game->map.map[x][y] == '1')
         return;
     if (game->map.map[x][y] == 'C')

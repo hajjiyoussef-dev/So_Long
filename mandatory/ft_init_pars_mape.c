@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/06 22:01:38 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/07 23:24:10 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,6 @@ void ft_is_empty(char *map, t_game *game)
         game->map.map = NULL;
         ft_error_msg("Invalid map. The map has an empty line at the beginning", game);
     }
-    if (len > 0 && map[len - 1] == '\n')
-    {
-        free(map);
-        game->map.map = NULL;
-        ft_error_msg("Invalid map. The map has an empty line at the end.", game);
-    }
     i = 0;
     while (map[i + 1])
     {
@@ -79,6 +73,7 @@ void ft_init_game_components(t_game *game)
     int j = 0;
     t_collectible *new_collectible;
 
+    game->collect = NULL;
     while (j < game->map.rows)
     {
         i = 0;
@@ -96,8 +91,9 @@ void ft_init_game_components(t_game *game)
             }
             else if (game->map.map[j][i] == 'C')
             {
-               new_collectible = malloc(sizeof(t_collectible));
-               if (!new_collectible)
+                
+                new_collectible = malloc(sizeof(t_collectible));
+                if (!new_collectible)
                     ft_error_msg("Memory allocation failed for collectible.", game);
                 new_collectible->x = i;
                 new_collectible->y = j;
@@ -110,6 +106,7 @@ void ft_init_game_components(t_game *game)
         }   
         j++;
     }
+    game->moves = 0;
 }
 
 
@@ -120,12 +117,9 @@ void ft_init_mape(char **argv, t_game *game)
     char *map_help;
     char *line_map;
 
-    //printf("Opening map: %s\n", argv[1]);
     map_read = open(argv[1], O_RDONLY);
     if (map_read == -1)
         ft_error_msg("The Map couldn't be opened. Does the Map exist?", game);
-    // else 
-    //     ft_error_msg("open succssfly", game);
     map_help = ft_strdup("");
     game->map.rows = 0;
     while (1)
@@ -141,6 +135,7 @@ void ft_init_mape(char **argv, t_game *game)
     ft_is_empty(map_help, game);
     if (map_help == NULL || ft_strlen(map_help) == 0)
         ft_error_msg("The map is empty or invalid.", game);
+    game->map.map = NULL;
     game->map.map = ft_split(map_help, '\n');
     free(map_help);
     ft_columns_num(game);

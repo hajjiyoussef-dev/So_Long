@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:01:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 20:41:10 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/07 20:22:30 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,21 @@
 
 void ft_draw_wall(t_game *game, int x, int y)
 {
-     printf("Drawing wall at (%d, %d)\n", x, y);
     mlx_put_image_to_window(game->mlxptr, game->window, game->wall_img, (x * TILE_SIZE), (y * TILE_SIZE));
 }
 
 void ft_draw_player(t_game *game, int x, int y)
 {
-    printf("Drawing player at (%d, %d)\n", x, y);
     mlx_put_image_to_window(game->mlxptr, game->window, game->player_img, (x * TILE_SIZE), (y * TILE_SIZE));   
 }
 
 void ft_draw_collec(t_game *game, int x, int y)
 {
-    printf("Drawing collect at (%d, %d)\n", x, y);
     mlx_put_image_to_window(game->mlxptr, game->window, game->collect_img, (x * TILE_SIZE), (y * TILE_SIZE));
 }
 
 void ft_draw_exit(t_game *game, int x , int y)
 {
-    printf("Drawing exit at (%d, %d)\n", x, y);
     if (game->collected == game->total_collectibles)
         mlx_put_image_to_window(game->mlxptr, game->window, game->exit_open_img, (x * TILE_SIZE), (y * TILE_SIZE));
     else 
@@ -42,7 +38,6 @@ void ft_draw_exit(t_game *game, int x , int y)
 
 void ft_draw_empty(t_game *game, int x, int y)
 {
-    printf("Drawing empty at (%d, %d)\n", x, y);
     mlx_put_image_to_window(game->mlxptr, game->window, game->floor_img, (x * TILE_SIZE), (y * TILE_SIZE));
 }
 
@@ -57,10 +52,7 @@ void    ft_render_map(t_game *game)
     {
         j = 0;
         while (j < game->map.cols)
-        {
-            //int pos_x = j * TILE_SIZE;
-            //int pos_y = i * TILE_SIZE;
-            
+        {   
             if (game->map.map[i][j] == '1')
                 ft_draw_wall(game, j, i);
             else if (game->map.map[i][j] == '0')

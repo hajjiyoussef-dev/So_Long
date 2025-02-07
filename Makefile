@@ -3,7 +3,7 @@ NAME = so_long
 SRC = ./mandatory/so_long.c ./mandatory/get_next_line.c ./mandatory/get_next_line_help.c \
 		./mandatory/ft_split.c ./mandatory/ft_render_map.c ./mandatory/ft_init_pars_mape.c \
 		./mandatory/ft_init_pars_mape_help.c ./mandatory/ft_init_mlx.c ./mandatory/ft_error_msg.c \
-		./mandatory/pars_of_map.c ./mandatory/ft_handel_keypress.c
+		./mandatory/pars_of_map.c ./mandatory/ft_handel_keypress.c ./mandatory/ft_mlxfree.c
 
 
 OBJC = $(SRC:.c=.o)
