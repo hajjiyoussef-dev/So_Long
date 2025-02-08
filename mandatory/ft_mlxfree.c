@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:03:24 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/07 19:17:00 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/08 18:53:16 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ void ft_cleanup_img(t_game *game)
     if (game->exit_open_img)
         mlx_destroy_image(game->mlxptr, game->exit_open_img);
     
+}
+
+void ft_freemap(t_game *game)
+{
+    int i;
+    i = 0;
+    if (game->map.map)
+    {
+        while (i < game->map.rows)
+        {
+            free(game->map.map[i]);
+            i++;
+        }
+        free(game->map.map);
+    }
 }
 
 void ft_mlxfree(t_game *game)

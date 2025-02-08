@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:40:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/07 20:25:56 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/08 19:01:55 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int ft_IsRectanguler(t_game *game)
     while (i < game->map.rows)
     {
         if (ft_strlen(game->map.map[i]) != width)
+        {
+            ft_freemap(game);
             return (0);
+        }
         i++;
     }
     return (1);    
@@ -43,14 +46,20 @@ int ft_is_closed_by_walls(t_game *game)
     while ( i < width)
     {
         if (game->map.map[0][i] != '1' || game->map.map[game->map.rows - 1][i] != '1')
+        {
+            ft_freemap(game);
             return (0);
+        }
         i++;
     }
     i = 0;
     while (i < game->map.rows)
     {
         if (game->map.map[i][0] != '1' || game->map.map[i][width - 1]  != '1')
+        {
+            ft_freemap(game);
             return (0); 
+        }
         i++;
     }
     return(1);     
@@ -73,6 +82,7 @@ int ft_is_valid_characters(t_game *game)
                 game->map.map[i][j] != 'E' &&
                 game->map.map[i][j] != '0' )
             {
+                ft_freemap(game);
                 return (0);
             }
             j++;
@@ -80,9 +90,7 @@ int ft_is_valid_characters(t_game *game)
         
         i++;
     }
-
     return (1);
-    
 }
 
 void ft_floo_fill(char **map_copy, int x, int y, int rows, int clos)
@@ -112,7 +120,6 @@ int ft_is_valid_path(t_game *game)
     i = 0;
     player_x = -1;
     player_y = -1;
-    // fprintf(stderr, "hannna");
     while (i < game->map.rows)
     {
         j = 0;
@@ -162,6 +169,7 @@ int ft_is_valid_path(t_game *game)
                         k++;
                     }
                     free(map_copy);
+                    ft_freemap(game);
                     return (0);
                 }
             }
@@ -214,11 +222,20 @@ void ft_validate_map(t_game *game)
         i++;
     }
     if (palyer_count != 1)
+    {
+        ft_freemap(game);
         ft_error_msg("Invalid map: There should be exactly one player :(", game);
+    }
     if (exit_count != 1)
+    {
+        ft_freemap(game);
         ft_error_msg("Invalid map: There should be exactly one exit :(", game);
+    }
     if (colle_count < 1)
+    {
+        ft_freemap(game);
         ft_error_msg("Invalid map: There should be at least one collectible :(", game);
+    }
     
 }
 

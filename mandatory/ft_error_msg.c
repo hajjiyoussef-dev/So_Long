@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:46:28 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 17:46:41 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/08 17:31:31 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,26 @@
 void ft_error_msg(char *str, t_game *game)
 {
     int i = 0;
-
+    // t_collectible *help;
     //game = NULL;
+    // if (game->map.map)
+    // {
+    //     while (i < game->map.rows)
+    //     {
+    //         free(game->map.map[i]);
+    //         i++;
+    //     }
+    //     free(game->map.map);
+        
+    // }
+    
+    // i  = 0;
+    // while (game->collect)
+    // {
+    //     help = game->collect;
+    //     game->collect = game->collect->next;
+    //     free(help);
+    // }
     free(game);
     while (str[i] != '\0')
     {
