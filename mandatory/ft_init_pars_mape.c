@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/09 22:27:54 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/09 22:45:22 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ void ft_init_game_components(t_game *game)
                     ft_freemap(game);
                     ft_error_msg("Memory allocation failed for collectible.", game);
                 }
-                new_collectible->x = i;
-                new_collectible->y = j;
+                // new_collectible->x = i;
+                // new_collectible->y = j;
                 new_collectible->next = game->collect;
                 game->collect = new_collectible;
                 game->total_collectibles++;

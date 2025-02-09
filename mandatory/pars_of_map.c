@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:40:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/09 22:32:29 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/09 22:41:50 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ int ft_IsRectanguler(t_game *game)
 {
     int i;
     int width;
-
-
-    if (game->map.rows <= 0)
-        return (0);
+    
     width = ft_strlen(game->map.map[0]);
     i = 1;
+    if (game->map.rows <= 0)
+        return (0);
     while (i < game->map.rows)
     {
         if (ft_strlen(game->map.map[i]) != width)
@@ -100,7 +99,6 @@ void ft_floo_fill(char **map_copy, int x, int y, int rows, int clos)
     if (map_copy[x][y] == '1' || map_copy[x][y] == 'F')
         return ;
     map_copy[x][y] = 'F';
-    
     ft_floo_fill(map_copy, x + 1, y, rows, clos); // down
     ft_floo_fill(map_copy, x - 1, y , rows, clos); // up
     ft_floo_fill(map_copy, x, y + 1, rows, clos); // right
@@ -136,7 +134,10 @@ int ft_is_valid_path(t_game *game)
         i++;
     }
     if (player_x == -1 || player_y == -1)
+    {
+        ft_freemap(game);
         ft_error_msg("Invalid map: No player position found.", game);
+    }
     map_copy = malloc(sizeof(char *) * (game->map.rows));
     if (!map_copy)
     {
@@ -148,7 +149,6 @@ int ft_is_valid_path(t_game *game)
     while (i < game->map.rows)
     {
         map_copy[i] = ft_strdup(game->map.map[i]);
-        map_copy[i] = NULL;
         if (!map_copy[i])
         {
             ft_freemap(game);
@@ -160,7 +160,6 @@ int ft_is_valid_path(t_game *game)
     ft_floo_fill(map_copy, player_x, player_y, game->map.rows, game->map.cols);
     i = 0;
     j = 0;
-
     while (i < game->map.rows)
     {
         j = 0;
