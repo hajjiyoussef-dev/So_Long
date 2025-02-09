@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:03:24 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/08 18:53:16 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/09 19:13:14 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,19 @@ void ft_freemap(t_game *game)
             i++;
         }
         free(game->map.map);
+    }
+}
+
+void ft_freecollectible(t_game *game)
+{
+    int i;
+    t_collectible *help;
+    i  = 0;
+    while (game->collect)
+    {
+        help = game->collect;
+        game->collect = game->collect->next;
+        free(help);
     }
 }
 

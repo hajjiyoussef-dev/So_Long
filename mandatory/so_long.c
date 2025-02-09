@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:04:53 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/08 18:37:49 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/09 19:15:51 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int main(int argc, char **argv)
     t_game *game;
     
     game = malloc(sizeof(t_game));
+    if (!game)
+        exit(1);
     ft_pars_argement(argc, argv, game);
     ft_init_mape(&argv[0], game);
     ft_start_game(game);

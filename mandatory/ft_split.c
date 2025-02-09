@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:34:44 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/02 17:35:11 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/09 20:11:27 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	**help_split(const char *s, char c, char **string)
 		if (len > 0)
 		{
 			string[i] = ft_str_dup(s, len);
-			if (string[i] == NULL)
+			if (!string[i])
 			{
 				help_free(string, i);
 				return (NULL);
@@ -92,17 +92,11 @@ static char	**help_split(const char *s, char c, char **string)
 char	**ft_split(char const *s, char c)
 {
 	char	**string;
-	int		i;
-
-	i = 0;
+	
 	if (!s)
 		return (NULL);
 	string = (char **)malloc((count_word(s, c) + 1) * sizeof(char *));
 	if (!string)
 		return (NULL);
-	while (i++ < count_word(s, c))
-	{
-		string[i] = NULL;
-	}
 	return (help_split(s, c, string));
 }

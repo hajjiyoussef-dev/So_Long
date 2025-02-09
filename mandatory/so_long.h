@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/08 18:54:26 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/09 20:25:52 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int ft_exit_game(t_game *game);
 
 void ft_mlxfree(t_game *game);
 void ft_freemap(t_game *game);
+void ft_freecollectible(t_game *game);
 
 
 #endif

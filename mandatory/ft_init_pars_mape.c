@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/08 00:33:40 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/09 22:27:54 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void ft_is_empty(char *map, t_game *game)
 
 void ft_columns_num(t_game *game)
 {
+    
     if (game->map.rows > 0)
         game->map.cols = ft_strlen(game->map.map[0]);
     else 
@@ -93,7 +94,10 @@ void ft_init_game_components(t_game *game)
                 
                 new_collectible = malloc(sizeof(t_collectible));
                 if (!new_collectible)
+                {
+                    ft_freemap(game);
                     ft_error_msg("Memory allocation failed for collectible.", game);
+                }
                 new_collectible->x = i;
                 new_collectible->y = j;
                 new_collectible->next = game->collect;
@@ -124,7 +128,10 @@ void ft_init_mape(char **argv, t_game *game)
     {
         line_map = get_next_line(map_read, 0);
         if (line_map == NULL)
+        {
+            free(map_help);
             break;
+        }
         map_help = ft_strappend(&map_help, line_map);
         free(line_map);
         game->map.rows++;
@@ -134,7 +141,6 @@ void ft_init_mape(char **argv, t_game *game)
     if (map_help == NULL || ft_strlen(map_help) == 0)
         ft_error_msg("The map is empty or invalid.", game);
     game->map.map = ft_split(map_help, '\n');
-    free(map_help);
     ft_columns_num(game);
     ft_validate_map(game);
     ft_init_game_components(game);

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:40:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/08 19:01:55 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/09 22:32:29 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,14 +139,22 @@ int ft_is_valid_path(t_game *game)
         ft_error_msg("Invalid map: No player position found.", game);
     map_copy = malloc(sizeof(char *) * (game->map.rows));
     if (!map_copy)
+    {
+        ft_freemap(game);
         ft_error_msg("Memory allocation failed for map copy.", game);
+    }
     i = 0;
     j = 0;
     while (i < game->map.rows)
     {
         map_copy[i] = ft_strdup(game->map.map[i]);
+        map_copy[i] = NULL;
         if (!map_copy[i])
+        {
+            ft_freemap(game);
+            free(map_copy);
             ft_error_msg("Memory allocation failed for row copy.", game);
+        }
         i++;
     }
     ft_floo_fill(map_copy, player_x, player_y, game->map.rows, game->map.cols);
