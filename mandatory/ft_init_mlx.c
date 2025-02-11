@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:38:33 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/09 23:04:20 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/11 22:36:22 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void ft_init_mlx(t_game *game)
     }
     
     game->window = mlx_new_window(game->mlxptr, window_width, window_height, "so_long");
-    
     if (!game->window)
     {
         mlx_destroy_display(game->mlxptr);
         ft_freemap(game);
+        ft_freecollectible(game);
         free(game->mlxptr);
         ft_error_msg("Failed to create window.", game);
     }
