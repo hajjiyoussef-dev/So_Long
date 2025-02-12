@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_mlx.c                                      :+:      :+:    :+:   */
+/*   ft_init_mlx_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 20:38:33 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 22:58:50 by yhajji           ###   ########.fr       */
+/*   Created: 2025/02/12 17:29:47 by yhajji            #+#    #+#             */
+/*   Updated: 2025/02/12 17:30:04 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void ft_init_mlx(t_game *game)
     int window_width = game->map.cols * TILE_SIZE;
     int window_height = game->map.rows * TILE_SIZE;
     game->mlxptr = mlx_init();
+    //game->mlxptr = NULL;
     if (!game->mlxptr)
     {
-        //ft_freemap(game);
+        ft_freemap(game);
         ft_error_msg("Failed to initialize MiniLibX.", game);
     }
     
@@ -29,9 +30,9 @@ void ft_init_mlx(t_game *game)
     if (!game->window)
     {
         mlx_destroy_display(game->mlxptr);
-        //ft_freemap(game);
-        //ft_freecollectible(game);
-        //free(game->mlxptr);
+        ft_freemap(game);
+        ft_freecollectible(game);
+        free(game->mlxptr);
         ft_error_msg("Failed to create window.", game);
     }
 }

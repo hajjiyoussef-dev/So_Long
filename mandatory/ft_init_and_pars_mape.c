@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_pars_mape.c                                :+:      :+:    :+:   */
+/*   ft_init_and_pars_mape.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/09 22:45:22 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/12 22:46:05 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ void ft_is_empty(char *map, t_game *game)
     int len;
 
     if (!map)
+    {
         ft_error_msg("Invalid map. The map is NULL.", game);
+    }
     len = ft_strlen(map);
+    printf("!!!!!11111\n");
     if (len > 0 && map[0] == '\n')
     {
         free(map);

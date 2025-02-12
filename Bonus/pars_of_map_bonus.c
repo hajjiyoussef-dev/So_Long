@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_of_map.c                                      :+:      :+:    :+:   */
+/*   pars_of_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 16:40:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 23:33:34 by yhajji           ###   ########.fr       */
+/*   Created: 2025/02/12 17:22:45 by yhajji            #+#    #+#             */
+/*   Updated: 2025/02/12 17:23:59 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 
 int ft_IsRectanguler(t_game *game)
 {
@@ -21,14 +22,9 @@ int ft_IsRectanguler(t_game *game)
     i = 1;
     if (game->map.rows <= 0)
         return (0);
-    printf("\n%d\n", game->map.rows);
-    // printf("!!!\n");
     while (i < game->map.rows)
     {
-        printf("%s\n", game->map.map[i]);
-        printf("%s\n", game->map.map[i + 1]);
-        printf("%s\n", game->map.map[i + 2]);
-        if (!game->map.map[i] && ft_strlen(game->map.map[i]) != width)
+        if (ft_strlen(game->map.map[i]) != width)
         {
             ft_freemap(game);
             return (0);
@@ -102,10 +98,10 @@ void ft_floo_fill(char **map_copy, int x, int y, int rows, int clos)
     if (map_copy[x][y] == '1' || map_copy[x][y] == 'F')
         return ;
     map_copy[x][y] = 'F';
-    ft_floo_fill(map_copy, x + 1, y, rows, clos);  // down
+    ft_floo_fill(map_copy, x + 1, y, rows, clos); // down
     ft_floo_fill(map_copy, x - 1, y , rows, clos); // up
-    ft_floo_fill(map_copy, x, y + 1, rows, clos);  // right
-    ft_floo_fill(map_copy, x, y - 1, rows, clos);  // left
+    ft_floo_fill(map_copy, x, y + 1, rows, clos); // right
+    ft_floo_fill(map_copy, x, y - 1, rows, clos); // left
 }
 
 
