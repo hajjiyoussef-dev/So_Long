@@ -6,11 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:22:45 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:23:59 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 22:04:11 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 
 int ft_IsRectanguler(t_game *game)
@@ -78,6 +78,7 @@ int ft_is_valid_characters(t_game *game)
                 game->map.map[i][j] != 'P' &&
                 game->map.map[i][j] != 'C' &&
                 game->map.map[i][j] != 'E' &&
+                game->map.map[i][j] != 'M' &&
                 game->map.map[i][j] != '0' )
             {
                 ft_freemap(game);
@@ -200,6 +201,7 @@ void ft_validate_map(t_game *game)
     int palyer_count = 0;
     int exit_count = 0;
     int colle_count = 0;
+    int enemy_count = 0;
     int i;
     int j;
 
@@ -223,6 +225,8 @@ void ft_validate_map(t_game *game)
                 colle_count++;
             else if (game->map.map[i][j] == 'E')
                 exit_count++;
+            else if (game->map.map[i][j] == 'M')
+                enemy_count++;
             j++;
         }
         i++;
@@ -241,6 +245,11 @@ void ft_validate_map(t_game *game)
     {
         ft_freemap(game);
         ft_error_msg("Invalid map: There should be at least one collectible :(", game);
+    }
+    if (enemy_count < 1)
+    {
+        ft_freemap(game);
+        ft_error_msg("Invalid map: There should be at least one enemy :(", game);
     }
     
 }

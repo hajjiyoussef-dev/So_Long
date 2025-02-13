@@ -6,11 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:53:56 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 16:59:56 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 22:04:15 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 
 void ft_start_game(t_game *game)

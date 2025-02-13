@@ -6,12 +6,12 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:54:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:22:22 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 22:30:39 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#ifndef SO_LONGBONUS_H
+#define SO_LONGBONUS_H
 
 
 #include <unistd.h>
@@ -43,8 +43,9 @@
 #define COINS_XPM           "files/sprites/coins_bag.xpm"
 #define EXIT_CLOSED_XPM     "files/sprites/close_exit.xpm"
 #define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
-#define PLAYER_XPM          "files/player/M.xpm"
+#define PLAYER_XPM          "files/player/finn.xpm"
 #define FLOOR_XPM           "files/sprites/floor.xpm"
+#define ENEMY_XPM           "files/player/M.xpm"
 
 
 typedef struct s_player {
@@ -75,6 +76,11 @@ typedef struct s_over_it{
     int y;
 } t_over_it;
 
+typedef struct s_enemy{
+    int x;
+    int y;
+    struct s_enemy *next;
+}   t_enemy;
 
 typedef struct s_game {
     void *mlxptr;
@@ -85,15 +91,19 @@ typedef struct s_game {
     void *exit_closed_img; 
     void *collect_img;
     void *floor_img;
+    void *enemy_img;
     int collected;          
     int total_collectibles; 
     int moves;
+    int win_lose;
+    
     
     t_over_it over_it;          
     t_map map;
     t_collectible *collect;
     t_player player;
     t_exit exit;
+    t_enemy *enemy;
 }   t_game;
 
 
@@ -102,7 +112,6 @@ void ft_error_msg(char *str, t_game *game);
 int	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-char *ft_strappend(char **dest, char *src);
 void	*ft_memcpy_get_next_line(void *dest, const void *src, size_t n);
 char	*ft_strjoin(char *s1, char *s2);
 
@@ -123,5 +132,18 @@ int ft_exit_game(t_game *game);
 void ft_mlxfree(t_game *game);
 void ft_freemap(t_game *game);
 void ft_freecollectible(t_game *game);
+
+void ft_putchar(char c);
+void ft_putstr(char *str);
+void	ft_putnbr(int nbr);
+void ft_win();
+void ft_lose();
+
+
+void ft_touch_enemy(t_game *game, int x, int y);
+
+
+void ft_exit_game_losing(t_game *game);
+
 
 #endif

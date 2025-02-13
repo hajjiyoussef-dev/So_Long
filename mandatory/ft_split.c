@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:34:44 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/09 20:11:27 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 15:08:31 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	**help_split(const char *s, char c, char **string)
 		if (len > 0)
 		{
 			string[i] = ft_str_dup(s, len);
-			if (!string[i])
+			if (string[i] == NULL)
 			{
 				help_free(string, i);
 				return (NULL);

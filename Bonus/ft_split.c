@@ -6,11 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:24:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:25:11 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 22:03:55 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 
 static void	help_free(char **string, int i)

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/09 20:25:52 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 20:02:56 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void ft_error_msg(char *str, t_game *game);
 int	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-char *ft_strappend(char **dest, char *src);
 void	*ft_memcpy_get_next_line(void *dest, const void *src, size_t n);
 char	*ft_strjoin(char *s1, char *s2);
 
@@ -124,6 +123,11 @@ int ft_exit_game(t_game *game);
 void ft_mlxfree(t_game *game);
 void ft_freemap(t_game *game);
 void ft_freecollectible(t_game *game);
+
+void	ft_putnbr(int nbr);
+void ft_putchar(char c);
+void ft_putstr(char *str);
+void ft_win();
 
 
 #endif

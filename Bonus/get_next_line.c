@@ -6,11 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:01:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:01:54 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 22:04:03 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static char	*the_next_line(char *res)
 {

@@ -6,11 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:31:24 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:31:34 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 22:03:22 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 
 void ft_error_msg(char *str, t_game *game)

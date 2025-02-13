@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 22:46:05 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 18:50:13 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void ft_is_empty(char *map, t_game *game)
         ft_error_msg("Invalid map. The map is NULL.", game);
     }
     len = ft_strlen(map);
-    printf("!!!!!11111\n");
     if (len > 0 && map[0] == '\n')
     {
         free(map);
@@ -61,11 +60,12 @@ void ft_is_empty(char *map, t_game *game)
 
 void ft_columns_num(t_game *game)
 {
-    
     if (game->map.rows > 0)
         game->map.cols = ft_strlen(game->map.map[0]);
     else 
+    {
         ft_error_msg("Invalid map: The map has no rows.", game);
+    }
 }
 
 
@@ -114,36 +114,39 @@ void ft_init_game_components(t_game *game)
     }
 }
 
-
-
 void ft_init_mape(char **argv, t_game *game)
 {
     int map_read;
     char *map_help;
     char *line_map;
+    int i = 0;
 
     map_read = open(argv[1], O_RDONLY);
     if (map_read == -1)
         ft_error_msg("The Map couldn't be opened. Does the Map exist?", game);
-    map_help = ft_strdup("");
+    map_help = NULL;
     game->map.rows = 0;
+    i = 0;
     while (1)
     {
         line_map = get_next_line(map_read, 0);
         if (line_map == NULL)
         {
-            free(map_help);
             break;
         }
-        map_help = ft_strappend(&map_help, line_map);
+        map_help = ft_strjoin(map_help, line_map);
         free(line_map);
         game->map.rows++;
+        i++;
     }
+    if (!line_map && i == 0)
+        ft_error_msg("Error the map is empty or invalid.", game);
     close(map_read);
     ft_is_empty(map_help, game);
     if (map_help == NULL || ft_strlen(map_help) == 0)
         ft_error_msg("The map is empty or invalid.", game);
     game->map.map = ft_split(map_help, '\n');
+    free(map_help);
     ft_columns_num(game);
     ft_validate_map(game);
     ft_init_game_components(game);

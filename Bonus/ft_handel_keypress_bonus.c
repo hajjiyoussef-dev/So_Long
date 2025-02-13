@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handel_keypress_help.c                          :+:      :+:    :+:   */
+/*   ft_handel_keypress_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:30:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:30:54 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 22:45:56 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 
 
@@ -20,8 +20,6 @@ int ft_exit_game(t_game *game)
     t_collectible *help;
 
     i = 0;
-    // printf("\n🎉 Congratulations! You won the game in %d moves! 🎉\n", game->moves);
-    // printf("Thanks for playing! 👏\n");
     if (game->map.map)
     {
         while (i < game->map.rows)
@@ -29,10 +27,8 @@ int ft_exit_game(t_game *game)
             free(game->map.map[i]);
             i++;
         }
-        free(game->map.map);
-        
+        free(game->map.map);   
     }
-    
     i  = 0;
     while (game->collect)
     {
@@ -40,11 +36,10 @@ int ft_exit_game(t_game *game)
         game->collect = game->collect->next;
         free(help);
     }
+    ft_win();
     ft_mlxfree(game);
     free(game);
-
     exit(0);
-    
 }
 void ft_call_over_it(t_game *game, int x, int y)
 {
@@ -60,6 +55,9 @@ void ft_call_over_it(t_game *game, int x, int y)
     game->player.y = y ;
     game->map.map[game->player.x][game->player.y] = 'P';
     game->moves++;
+    ft_putchar('\n');
+    ft_putstr("number of moves : ");
+    ft_putnbr(game->moves);
     
 }
 void ft_call_render_map(t_game *game, int x, int y)
@@ -74,7 +72,9 @@ void ft_call_render_map(t_game *game, int x, int y)
     }
     game->map.map[game->player.x][game->player.y] = 'P';
     game->moves++;
-    printf("moves %d \n", game->moves);
+    ft_putchar('\n');
+    ft_putstr("number of moves : ");
+    ft_putnbr(game->moves);
     ft_render_map(game);
     return ;
 }
@@ -90,9 +90,9 @@ void ft_move_player(t_game *game, int x, int y)
         game->collected++;
         game->map.map[x][y] = '0';
     }
+    ft_touch_enemy(game, x, y);
     if (game->map.map[x][y] == 'E')
     {
-        
         if (game->collected == game->total_collectibles)
         {
             ft_exit_game(game);  

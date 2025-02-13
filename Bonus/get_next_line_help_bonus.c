@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line_help_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 17:03:06 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:21:41 by yhajji           ###   ########.fr       */
+/*   Created: 2025/02/13 20:09:35 by yhajji            #+#    #+#             */
+/*   Updated: 2025/02/13 22:03:58 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+
+
+#include "so_long_bonus.h"
 
 
 void	*ft_memcpy_get_next_line(void *dest, const void *src, size_t n)

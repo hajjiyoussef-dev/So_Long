@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:46:28 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/09 19:21:35 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 15:15:27 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void ft_error_msg(char *str, t_game *game)
     //     game->collect = game->collect->next;
     //     free(help);
     // }
-    free(game);
+    if (game)
+        free(game);
     while (str[i] != '\0')
     {
         write(1, &str[i], 1);

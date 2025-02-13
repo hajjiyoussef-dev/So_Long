@@ -6,11 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:01 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:29:28 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 22:03:40 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 
 int	ft_strlen(const char *s)
@@ -86,27 +86,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-char *ft_strappend(char **dest, char *src)
-{
-    char *res;
-    int src_len;
-    int dest_len;
-
-    if (!dest || !src)
-        return (NULL);
-
-    src_len = ft_strlen(src);
-    dest_len = ft_strlen(*dest);
-
-    res = malloc((src_len + dest_len) + 1);  
-    if (!res)
-        return (NULL);
-
-    ft_memcpy(res, *dest, dest_len);
-    ft_memcpy(res + dest_len, src, src_len);
-
-    res[dest_len + src_len] = '\0';
-    free(*dest);
-    *dest = res;
-    return (res);
-}

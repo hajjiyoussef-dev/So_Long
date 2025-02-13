@@ -6,11 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:25:42 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:26:14 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 22:10:39 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 
 void ft_draw_wall(t_game *game, int x, int y)
@@ -40,6 +40,10 @@ void ft_draw_empty(t_game *game, int x, int y)
 {
     mlx_put_image_to_window(game->mlxptr, game->window, game->floor_img, (x * TILE_SIZE), (y * TILE_SIZE));
 }
+void ft_draw_enemy(t_game *game, int x, int y)
+{
+    mlx_put_image_to_window(game->mlxptr, game->window, game->enemy_img, (x * TILE_SIZE), (y * TILE_SIZE));
+}
 
 void    ft_render_map(t_game *game)
 {
@@ -63,6 +67,8 @@ void    ft_render_map(t_game *game)
                 ft_draw_collec(game, j, i);
             else if (game->map.map[i][j] == 'E')
                 ft_draw_exit(game, j, i);
+            else if (game->map.map[i][j] == 'M')
+                ft_draw_enemy(game, j, i);
             
             j++;
         }

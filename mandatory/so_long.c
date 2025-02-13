@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:04:53 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 17:48:00 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 15:19:06 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,8 @@ int main(int argc, char **argv)
     game = malloc(sizeof(t_game));
     if (!game)
         exit(1);
-    fprintf(stderr, "hanna1");
     ft_pars_argement(argc, argv, game);
-    fprintf(stderr,"hanna2");
     ft_init_mape(&argv[0], game);
-    fprintf(stderr,"hanna3");
     ft_start_game(game);
-    fprintf(stderr,"hanna4");
     return (0);
 }

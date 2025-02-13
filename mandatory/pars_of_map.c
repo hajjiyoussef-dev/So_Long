@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:40:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 23:33:34 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 15:55:37 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,12 @@ int ft_IsRectanguler(t_game *game)
     int width;
     
     width = ft_strlen(game->map.map[0]);
-    i = 1;
+    i = 0;
     if (game->map.rows <= 0)
         return (0);
-    printf("\n%d\n", game->map.rows);
-    // printf("!!!\n");
     while (i < game->map.rows)
     {
-        printf("%s\n", game->map.map[i]);
-        printf("%s\n", game->map.map[i + 1]);
-        printf("%s\n", game->map.map[i + 2]);
-        if (!game->map.map[i] && ft_strlen(game->map.map[i]) != width)
+        if (ft_strlen(game->map.map[i]) != width)
         {
             ft_freemap(game);
             return (0);
@@ -210,8 +205,10 @@ void ft_validate_map(t_game *game)
     i = 0;
     if (!ft_IsRectanguler(game))
         ft_error_msg("Invalid map: The map is not rectangular.", game);
+    //fprintf(stderr, "hanna4");
     if (!ft_is_closed_by_walls(game))
         ft_error_msg("Invalid map: The map is not fully enclosed by walls.", game);
+    //fprintf(stderr, "hanna5");
     if (!ft_is_valid_characters(game))
         ft_error_msg("Invalid map: The map contains an invalid character.", game);
     if (!ft_is_valid_path(game))

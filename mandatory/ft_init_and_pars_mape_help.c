@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:30:06 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/12 19:14:19 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 18:49:54 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,27 +87,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-char *ft_strappend(char **dest, char *src)
-{
-    char *res;
-    int src_len;
-    int dest_len;
-
-    if (!dest || !src)
-        return (NULL);
-
-    src_len = ft_strlen(src);
-    dest_len = ft_strlen(*dest);
-
-    res = malloc((src_len + dest_len) + 1);  
-    if (!res)
-        return (NULL);
-
-    ft_memcpy(res, *dest, dest_len);
-    ft_memcpy(res + dest_len, src, src_len);
-
-    res[dest_len + src_len] = '\0';
-    free(*dest);
-    *dest = res;
-    return (res);
-}
