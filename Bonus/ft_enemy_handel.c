@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 22:19:02 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 22:29:25 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 23:46:47 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,28 @@ void ft_exit_game_losing(t_game *game)
     ft_mlxfree(game);
     free(game);
     exit(0);
+}
+
+void ft_move_enemy(t_game *game)
+{
+    t_enemy *enemy ;
+    int new_x;
+    int new_y;
+
+    enemy = game->enemy;
+    while (enemy)
+    {
+        new_x = enemy->x;
+        new_y = enemy->y + enemy->direction;
+        if (game->map.map[game->enemy->x][game->enemy->y - 1] == '1' &&
+            game->map.map[game->enemy->x][game->enemy->y + 1] == '1')
+        {
+            enemy = enemy->next;
+            continue;
+        }
+                
+    }
+    
 }
 
 void ft_touch_enemy(t_game *game, int x, int y)

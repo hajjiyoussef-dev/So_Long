@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:54:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 22:30:39 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 23:37:34 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_over_it{
 typedef struct s_enemy{
     int x;
     int y;
+    int direction;
     struct s_enemy *next;
 }   t_enemy;
 

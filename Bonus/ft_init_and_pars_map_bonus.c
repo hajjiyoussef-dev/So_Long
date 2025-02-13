@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:27:56 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 21:37:14 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/13 23:43:47 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ void ft_init_game_components(t_game *game)
                     ft_freemap(game);
                     ft_error_msg("Memory allocation failed for enemy. ", game);
                 }
+                new_enemy->x = j;
+                new_enemy->y = i;
+                new_enemy->direction = 1;
                 new_enemy->next = game->enemy;
                 game->enemy = new_enemy;
                 
