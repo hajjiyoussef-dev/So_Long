@@ -6,13 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:30:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 22:45:56 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/14 17:18:57 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-
 
 int ft_exit_game(t_game *game)
 {
@@ -27,7 +25,7 @@ int ft_exit_game(t_game *game)
             free(game->map.map[i]);
             i++;
         }
-        free(game->map.map);   
+        free(game->map.map);
     }
     i  = 0;
     while (game->collect)
@@ -49,7 +47,6 @@ void ft_call_over_it(t_game *game, int x, int y)
     game->over_it.over_it = 'Q';
     game->over_it.x = x;
     game->over_it.y = y;
-    
     game->map.map[game->player.x][game->player.y] = '0';
     game->player.x = x ;
     game->player.y = y ;

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:54:31 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 20:03:42 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/14 18:48:49 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,8 @@
 
 int ft_exit_game(t_game *game)
 {
-    int i;
-    t_collectible *help;
-
-    i = 0;
-    if (game->map.map)
-    {
-        while (i < game->map.rows)
-        {
-            free(game->map.map[i]);
-            i++;
-        }
-        free(game->map.map);   
-    }
-    i  = 0;
-    while (game->collect)
-    {
-        help = game->collect;
-        game->collect = game->collect->next;
-        free(help);
-    }
+    ft_freemap(game);
+    ft_freecollectible(game);
     ft_win();
     ft_mlxfree(game);
     free(game);
@@ -91,16 +73,13 @@ void ft_move_player(t_game *game, int x, int y)
     {
         
         if (game->collected == game->total_collectibles)
-        {
-            ft_exit_game(game);  
-            return;
-        }
+            ft_exit_game(game);
         else
         {
             ft_call_over_it(game, x, y);
             ft_render_map(game);
-            return ;
         }
+        return ;
     }
     ft_call_render_map(game, x, y);
 }

@@ -18,8 +18,8 @@ SRC_BON = ./Bonus/so_long_bonus.c ./Bonus/get_next_line.c ./Bonus/get_next_line_
 OBJC_BON = $(SRC_BON:.c=.o)
 
 INC = -I ./mandatory -I ./minilibx-linux
-INC_BON = -I ./Bonus - I ./minilibx-linux
-CFLAGS = -Wall -Wextra -Werror 
+INC_BON = -I ./Bonus -I ./minilibx-linux
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
 CC = cc
 
 MLX_FLAGS = -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
@@ -45,4 +45,4 @@ clean:
 fclean: clean 
 	rm -rf $(NAME) $(NAME_BON)
 
-re :  fclean all Bonus
+re :  fclean all 

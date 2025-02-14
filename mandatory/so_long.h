@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 20:02:56 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/14 18:35:39 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 #define COINS_XPM           "files/sprites/coins_bag.xpm"
 #define EXIT_CLOSED_XPM     "files/sprites/close_exit.xpm"
 #define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
-#define PLAYER_XPM          "files/player/M.xpm"
+#define PLAYER_XPM          "files/player/finn.xpm"
 #define FLOOR_XPM           "files/sprites/floor.xpm"
 
 

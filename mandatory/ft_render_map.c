@@ -6,12 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:01:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/07 20:22:30 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/14 17:14:36 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void ft_draw_wall(t_game *game, int x, int y)
 {
@@ -43,11 +42,11 @@ void ft_draw_empty(t_game *game, int x, int y)
 
 void    ft_render_map(t_game *game)
 {
-    int i = 0;
+    int i;
     int j;
     
+    i = 0;
     mlx_clear_window(game->mlxptr, game->window);
-    
     while (i < game->map.rows)
     {
         j = 0;
@@ -63,14 +62,8 @@ void    ft_render_map(t_game *game)
                 ft_draw_collec(game, j, i);
             else if (game->map.map[i][j] == 'E')
                 ft_draw_exit(game, j, i);
-            
             j++;
         }
-        i++;
-        
+        i++;   
     }
-    
-    
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:54:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 23:37:34 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/14 16:01:31 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,9 @@ void ft_touch_enemy(t_game *game, int x, int y);
 
 
 void ft_exit_game_losing(t_game *game);
+
+
+void ft_move_enemy(t_game *game);
 
 
 #endif

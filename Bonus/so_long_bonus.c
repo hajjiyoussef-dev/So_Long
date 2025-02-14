@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:53:56 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 23:22:10 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/14 16:45:18 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 int ft_move_up(t_game *game)
 {
     static int frame_count = 0;
-    if (frame_count % 30 == 0)
-        ft_move_eneym(game);
-    ft_render_map(game);
+    if (frame_count % 20000 == 0)
+        ft_move_enemy(game);
     frame_count++;
     return (0);
 }
@@ -29,9 +28,9 @@ void ft_start_game(t_game *game)
     ft_init_mlx(game);
     ft_load_images(game);
     ft_render_map(game);
+    mlx_loop_hook(game->mlxptr, ft_move_up, game);
     mlx_hook(game->window, 2, 1L << 0, ft_handel_keypress, game);
     mlx_hook(game->window, 17, 0, ft_exit_game, game);
-    mlx_loop_hook(game->mlxptr, ft_move_up, game);
     mlx_loop(game->mlxptr);
 }
 
