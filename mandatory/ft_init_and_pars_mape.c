@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 22:42:51 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/14 22:51:45 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,23 @@ void ft_columns_num(t_game *game)
 
 
 
-// void ft_print_collectibles(t_game *game)
-// {
-//     t_collectible *current = game->collect;
-//     int count = 0;
+void ft_print_collectibles(t_game *game)
+{
+    t_collectible *current = game->collect;
+    int count = 0;
 
-//     printf("Collectibles in the list:\n");
-//     while (current)
-//     {
-//         printf("Collectible %d: x = %d, y = %d\n", count, current->x, current->y);
-//         current = current->next;
-//         count++;
-//     }
-//     if (count == 0)
-//     {
-//         printf("No collectibles in the list.\n");
-//     }
-// }
+    printf("Collectibles in the list:\n");
+    while (current)
+    {
+        printf("Collectible %d: x = %d, y = %d\n", count, current->x, current->y);
+        current = current->next;
+        count++;
+    }
+    if (count == 0)
+    {
+        printf("No collectibles in the list.\n");
+    }
+}
 
 
 void ft_init_game_components(t_game *game)
@@ -96,15 +96,7 @@ void ft_init_game_components(t_game *game)
     t_collectible *new_collectible;
 
 
-    game->collect = NULL;
-    game->total_collectibles = 0;
-    game->collected = 0; // Initialize collected collectibles to 0
-
-    // Initialize player and exit positions to invalid values
-    game->player.x = -1;
-    game->player.y = -1;
-    game->exit.x = -1;
-    game->exit.y = -1;
+    
 
     while (j < game->map.rows)
     {
@@ -136,7 +128,7 @@ void ft_init_game_components(t_game *game)
                 new_collectible->x = i;
                 new_collectible->y = j;
                 new_collectible->next = game->collect;
-                //ft_print_collectibles(game);
+                ft_print_collectibles(game);
                 game->collect = new_collectible;
                 game->total_collectibles++;
                 

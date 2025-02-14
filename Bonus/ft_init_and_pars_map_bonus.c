@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:27:56 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 23:43:47 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/14 23:24:06 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,19 @@ void ft_columns_num(t_game *game)
     }
 }
 
+// t_enemy *ft_create_enemy(int x, int y, int direction)
+// {
+//     t_enemy *new_enemy = malloc(sizeof(t_enemy));
+//     if (!new_enemy)
+//         return NULL;
 
+//     new_enemy->x = x;          // Initialize x position
+//     new_enemy->y = y;          // Initialize y position
+//     new_enemy->direction = direction; // Initialize direction
+//     new_enemy->next = NULL;    // Initialize next pointer
+
+//     return new_enemy;
+// }
 
 
 void ft_init_game_components(t_game *game)
@@ -88,12 +100,20 @@ void ft_init_game_components(t_game *game)
             }
             else if (game->map.map[j][i] == 'E')
             {
-                game->exit.x = i;
-                game->exit.y = j;
+                game->exit.x = j;
+                game->exit.y = i;
             }
             else if (game->map.map[j][i] == 'M')
             {
-                //ft_enemy(game);
+                // new_enemy = ft_create_enemy(i, j, 1); // Initialize enemy at (i, j) with direction 1
+                // if (!new_enemy)
+                // {
+                //     ft_freemap(game);
+                //     ft_error_msg("Memory allocation failed for enemy.", game);
+                // }
+                // new_enemy->next = game->enemy; // Link to the existing list
+                // game->enemy = new_enemy;
+                
                 new_enemy = malloc(sizeof(t_enemy));
                 if (!new_enemy)
                 {
@@ -116,6 +136,9 @@ void ft_init_game_components(t_game *game)
                     ft_freemap(game);
                     ft_error_msg("Memory allocation failed for collectible.", game);
                 }
+                new_collectible->next = NULL;
+                new_collectible->x = 0;
+                new_collectible->y = 0;
                 new_collectible->next = game->collect;
                 game->collect = new_collectible;
                 game->total_collectibles++;

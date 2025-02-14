@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:30:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 17:18:57 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/14 23:48:29 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int ft_exit_game(t_game *game)
 {
     int i;
     t_collectible *help;
+    t_enemy *help_two;
 
     i = 0;
     if (game->map.map)
@@ -34,6 +35,13 @@ int ft_exit_game(t_game *game)
         game->collect = game->collect->next;
         free(help);
     }
+    while (game->enemy)
+    {
+        help_two = game->enemy;
+        game->enemy = game->enemy->next;
+        free(help_two);
+    }
+    
     ft_win();
     ft_mlxfree(game);
     free(game);
