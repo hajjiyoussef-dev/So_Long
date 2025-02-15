@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:54:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 21:49:23 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 23:03:25 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@
 #define LEFT_ARROW  65361  
 #define RIGHT_ARROW 65363  
 
-#define WALL_XPM            "files/sprites/wall.xpm"
-#define COINS_XPM0           "files/sprites/coins_bag0.xpm"
-#define COINS_XPM1           "files/sprites/coins_bag1.xpm"
-#define COINS_XPM2           "files/sprites/coins_bag2.xpm"
-#define COINS_XPM3           "files/sprites/coins_bag3.xpm"
-#define EXIT_CLOSED_XPM     "files/sprites/close_exit.xpm"
-#define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
-#define PLAYER_XPM          "files/player/finn.xpm"
-#define FLOOR_XPM           "files/sprites/floor.xpm"
-#define ENEMY_XPM           "files/player/M.xpm"
+#define WALL_XPM            "textures/wall.xpm"
+#define COINS_XPM0           "textures/coins_bag0.xpm"
+#define COINS_XPM1           "textures/coins_bag1.xpm"
+#define COINS_XPM2           "textures/coins_bag2.xpm"
+#define COINS_XPM3           "textures/coins_bag3.xpm"
+#define EXIT_CLOSED_XPM     "textures/close_exit.xpm"
+#define OPEN_EXIT_XPM       "textures/open-exit.xpm"
+#define PLAYER_XPM          "textures/finn.xpm"
+#define FLOOR_XPM           "textures/floor.xpm"
+#define ENEMY_XPM           "textures/M.xpm"
 
 
 typedef struct s_player {
@@ -154,6 +154,7 @@ void ft_exit_game_losing(t_game *game);
 
 void ft_move_enemy(t_game *game);
 void ft_load_collect_img(t_game *game);
+void ft_printOn_window(t_game *game);
 
 
 #endif

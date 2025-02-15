@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 18:25:04 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 22:31:58 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@
 #define LEFT_ARROW  65361  
 #define RIGHT_ARROW 65363  
 
-#define WALL_XPM            "files/sprites/wall.xpm"
-#define COINS_XPM           "files/sprites/coins_bag0.xpm"
-#define EXIT_CLOSED_XPM     "files/sprites/close_exit.xpm"
-#define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
-#define PLAYER_XPM          "files/player/finn.xpm"
-#define FLOOR_XPM           "files/sprites/floor.xpm"
+#define WALL_XPM            "textures/wall.xpm"
+#define COINS_XPM           "textures/coins_bag0.xpm"
+#define EXIT_CLOSED_XPM     "textures/close_exit.xpm"
+#define OPEN_EXIT_XPM       "textures/open-exit.xpm"
+#define PLAYER_XPM          "textures/finn.xpm"
+#define FLOOR_XPM           "textures/floor.xpm"
 
 
 typedef struct s_player {

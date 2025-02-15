@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:30:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 21:53:32 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 22:58:57 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,6 @@ void ft_call_render_map(t_game *game, int x, int y)
     }
     game->map.map[game->player.x][game->player.y] = 'P';
     game->moves++;
-    // ft_putchar('\n');
-    // ft_putstr("number of moves : ");
-    // ft_putnbr(game->moves);
     ft_render_map(game);
     return ;
 }

@@ -6,19 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:04:53 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 21:41:32 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 22:35:01 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void ft_printOn_window(t_game *game)
-{
-    char *move_conut;
-
-    move_conut = ft_itoa(game->moves);
-}
-
 
 void ft_start_game(t_game *game)
 {
