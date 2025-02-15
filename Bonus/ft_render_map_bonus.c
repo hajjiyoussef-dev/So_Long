@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:25:42 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 17:34:29 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 21:55:59 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void    ft_render_map(t_game *game)
     int i = 0;
     int j;
     
-    //aaaaaaaa(game->mlxptr, game->window);
-    
     while (i < game->map.rows)
     {
         j = 0;
@@ -72,14 +70,10 @@ void    ft_render_map(t_game *game)
                 ft_draw_exit(game, j, i);
             else if (game->map.map[i][j] == 'M')
                 ft_draw_enemy(game, j, i);
-            
             j++;
         }
-        i++;
-        
+        i++; 
     }
-    
-    
 }
 
 

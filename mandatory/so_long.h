@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 18:35:39 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 18:25:04 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 #define RIGHT_ARROW 65363  
 
 #define WALL_XPM            "files/sprites/wall.xpm"
-#define COINS_XPM           "files/sprites/coins_bag.xpm"
+#define COINS_XPM           "files/sprites/coins_bag0.xpm"
 #define EXIT_CLOSED_XPM     "files/sprites/close_exit.xpm"
 #define OPEN_EXIT_XPM       "files/sprites/open-exit.xpm"
 #define PLAYER_XPM          "files/player/finn.xpm"
@@ -128,6 +128,7 @@ void	ft_putnbr(int nbr);
 void ft_putchar(char c);
 void ft_putstr(char *str);
 void ft_win();
+int ft_close_game(t_game *game);
 
 
 #endif

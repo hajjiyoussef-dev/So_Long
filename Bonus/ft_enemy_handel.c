@@ -6,35 +6,23 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 22:19:02 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 16:22:17 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 20:07:04 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-
 void ft_exit_game_losing(t_game *game)
 {
-    int i;
-    t_collectible *help;
-
-    i = 0;
-    if (game->map.map)
+    t_enemy *help_two;
+    while (game->enemy)
     {
-        while (i < game->map.rows)
-        {
-            free(game->map.map[i]);
-            i++;
-        }
-        free(game->map.map);   
+        help_two = game->enemy;
+        game->enemy = game->enemy->next;
+        free(help_two);
     }
-    i  = 0;
-    while (game->collect)
-    {
-        help = game->collect;
-        game->collect = game->collect->next;
-        free(help);
-    }
+    ft_freemap(game);
+    ft_freecollectible(game);
     ft_lose();
     ft_mlxfree(game);
     free(game);
@@ -68,17 +56,13 @@ void ft_move_enemy(t_game *game)
             game->map.map[new_x][new_y] = 'M';
             enemy->y = new_y;
             moved = 1;
-            
         }
         else 
-        {
             enemy->direction *= -1;
-        }
         enemy = enemy->next;
     }
     if (moved)
         ft_render_map(game);
-    
 }
 
 void ft_touch_enemy(t_game *game, int x, int y)

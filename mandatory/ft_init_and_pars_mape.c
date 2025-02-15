@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 22:51:45 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 18:43:28 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,34 +69,11 @@ void ft_columns_num(t_game *game)
 }
 
 
-
-void ft_print_collectibles(t_game *game)
-{
-    t_collectible *current = game->collect;
-    int count = 0;
-
-    printf("Collectibles in the list:\n");
-    while (current)
-    {
-        printf("Collectible %d: x = %d, y = %d\n", count, current->x, current->y);
-        current = current->next;
-        count++;
-    }
-    if (count == 0)
-    {
-        printf("No collectibles in the list.\n");
-    }
-}
-
-
 void ft_init_game_components(t_game *game)
 {
     int i;
     int j = 0;
     t_collectible *new_collectible;
-
-
-    
 
     while (j < game->map.rows)
     {
@@ -115,24 +92,17 @@ void ft_init_game_components(t_game *game)
             }
             else if (game->map.map[j][i] == 'C')
             {
-                
                 new_collectible = malloc(sizeof(t_collectible));
                 if (!new_collectible)
                 {
                     ft_freemap(game);
                     ft_error_msg("Memory allocation failed for collectible.", game);
                 }
-                new_collectible->next = NULL;
-                new_collectible->x = 0;
-                new_collectible->y = 0;
                 new_collectible->x = i;
                 new_collectible->y = j;
                 new_collectible->next = game->collect;
-                ft_print_collectibles(game);
                 game->collect = new_collectible;
                 game->total_collectibles++;
-                
-                
             }
             i++;
         }   

@@ -6,12 +6,25 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:53:56 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 17:28:34 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 22:14:07 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+void ft_printOn_window(t_game *game)
+{
+    char *move_conut;
+
+    move_conut = ft_itoa(game->moves);
+
+    if (move_conut)
+    {
+        mlx_string_put(game->mlxptr, game->window, 20, 30, 0xADD8E6, "Moves : ");
+        mlx_string_put(game->mlxptr, game->window, 70, 30, 0xADD8E6, move_conut);
+        free(move_conut);
+    }
+}
 
 int ft_game_loop(t_game *game)
 {
@@ -32,30 +45,12 @@ int ft_game_loop(t_game *game)
         need_redraw = 1;
     }
     if (need_redraw)
+    {
         ft_render_map(game);
+        ft_printOn_window(game);
+    }
     return (0);
 }
-
-// int ft_move_up(t_game *game)
-// {
-//     static int frame_count = 0;
-//     if (frame_count % 1000 == 0)
-//         ft_move_enemy(game);
-//     frame_count++;
-//     //ft_render_map(game);
-//     return (0);
-// }
-// int ft_animate_coins(t_game *game)
-// {
-//     game->frame_counter++;
-//     if (game->frame_counter >= 30)
-//     {
-//         game->current_collect_frame = (game->current_collect_frame + 1) % 4 ;
-//         game->frame_counter = 0;
-//     }
-//     ft_render_map(game);
-//     return (0);
-// }
 
 void ft_start_game(t_game *game)
 {

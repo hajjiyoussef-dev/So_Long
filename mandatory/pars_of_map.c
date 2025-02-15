@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:40:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 15:55:37 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 18:55:20 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ void ft_floo_fill(char **map_copy, int x, int y, int rows, int clos)
     if (map_copy[x][y] == '1' || map_copy[x][y] == 'F')
         return ;
     map_copy[x][y] = 'F';
-    ft_floo_fill(map_copy, x + 1, y, rows, clos);  // down
-    ft_floo_fill(map_copy, x - 1, y , rows, clos); // up
-    ft_floo_fill(map_copy, x, y + 1, rows, clos);  // right
-    ft_floo_fill(map_copy, x, y - 1, rows, clos);  // left
+    ft_floo_fill(map_copy, x + 1, y, rows, clos);  
+    ft_floo_fill(map_copy, x - 1, y , rows, clos); 
+    ft_floo_fill(map_copy, x, y + 1, rows, clos);  
+    ft_floo_fill(map_copy, x, y - 1, rows, clos);  
 }
 
 
@@ -205,10 +205,8 @@ void ft_validate_map(t_game *game)
     i = 0;
     if (!ft_IsRectanguler(game))
         ft_error_msg("Invalid map: The map is not rectangular.", game);
-    //fprintf(stderr, "hanna4");
     if (!ft_is_closed_by_walls(game))
         ft_error_msg("Invalid map: The map is not fully enclosed by walls.", game);
-    //fprintf(stderr, "hanna5");
     if (!ft_is_valid_characters(game))
         ft_error_msg("Invalid map: The map contains an invalid character.", game);
     if (!ft_is_valid_path(game))
@@ -243,6 +241,5 @@ void ft_validate_map(t_game *game)
         ft_freemap(game);
         ft_error_msg("Invalid map: There should be at least one collectible :(", game);
     }
-    
 }
 

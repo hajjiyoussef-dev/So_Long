@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:54:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 16:45:18 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 21:49:23 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,9 +141,9 @@ void ft_freecollectible(t_game *game);
 
 void ft_putchar(char c);
 void ft_putstr(char *str);
-void	ft_putnbr(int nbr);
 void ft_win();
 void ft_lose();
+char	*ft_itoa(int n);
 
 
 void ft_touch_enemy(t_game *game, int x, int y);

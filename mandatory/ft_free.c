@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:03:24 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 19:23:04 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 18:57:25 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,35 +46,15 @@ void ft_freemap(t_game *game)
 
 void ft_freecollectible(t_game *game)
 {
-    if (!game) {
-        printf("Error: game is NULL\n");
-        return;
+    int i;
+    t_collectible *help;
+    i  = 0;
+    while (game->collect)
+    {
+        help = game->collect;
+        game->collect = game->collect->next;
+        free(help);
     }
-
-    t_collectible *current = game->collect;
-    t_collectible *next;
-
-    printf("\nStarting to free collectibles...\n");
-
-    if (!current) {
-        printf("No collectibles to free (game->collect is NULL)\n");
-        return;
-    }
-
-    while (current) {
-        if (!current) {
-            printf("Error: current is NULL\n");
-            break;
-        }
-
-        next = current->next;  // Save next collectible
-        printf("Freeing collectible at address: %p\n", (void*)current);
-        free(current);         // Free current collectible
-        current = next;        // Move to the next collectible
-    }
-
-    game->collect = NULL;  // Set the list to NULL after freeing all
-    printf("Collectibles freed and list set to NULL\n");
 }
 
 

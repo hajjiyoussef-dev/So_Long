@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:30:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 23:48:29 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 21:53:32 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,16 @@
 
 int ft_exit_game(t_game *game)
 {
-    int i;
-    t_collectible *help;
     t_enemy *help_two;
-
-    i = 0;
-    if (game->map.map)
-    {
-        while (i < game->map.rows)
-        {
-            free(game->map.map[i]);
-            i++;
-        }
-        free(game->map.map);
-    }
-    i  = 0;
-    while (game->collect)
-    {
-        help = game->collect;
-        game->collect = game->collect->next;
-        free(help);
-    }
+    
+    ft_freemap(game);
+    ft_freecollectible(game);
     while (game->enemy)
     {
         help_two = game->enemy;
         game->enemy = game->enemy->next;
         free(help_two);
     }
-    
     ft_win();
     ft_mlxfree(game);
     free(game);
@@ -60,9 +42,9 @@ void ft_call_over_it(t_game *game, int x, int y)
     game->player.y = y ;
     game->map.map[game->player.x][game->player.y] = 'P';
     game->moves++;
-    ft_putchar('\n');
-    ft_putstr("number of moves : ");
-    ft_putnbr(game->moves);
+    // ft_putchar('\n');
+    // ft_putstr("number of moves : ");
+    // ft_putnbr(game->moves);
     
 }
 void ft_call_render_map(t_game *game, int x, int y)
@@ -77,9 +59,9 @@ void ft_call_render_map(t_game *game, int x, int y)
     }
     game->map.map[game->player.x][game->player.y] = 'P';
     game->moves++;
-    ft_putchar('\n');
-    ft_putstr("number of moves : ");
-    ft_putnbr(game->moves);
+    // ft_putchar('\n');
+    // ft_putstr("number of moves : ");
+    // ft_putnbr(game->moves);
     ft_render_map(game);
     return ;
 }

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:54:31 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 22:52:48 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 18:54:36 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,9 @@ int ft_exit_game(t_game *game)
 }
 void ft_call_over_it(t_game *game, int x, int y)
 {
-    // game->over_it.over_it = '0';
-    // game->over_it.x = -1;
-    // game->over_it.y = -1;
     game->over_it.over_it = 'Q';
     game->over_it.x = x;
     game->over_it.y = y;
-    
     game->map.map[game->player.x][game->player.y] = '0';
     game->player.x = x ;
     game->player.y = y ;
@@ -87,9 +83,8 @@ void ft_move_player(t_game *game, int x, int y)
 
 int ft_handel_keypress(int keycode, t_game *game)
 {
-    
     if (keycode == ESC_KEY)
-        ft_exit_game(game);
+        ft_close_game(game);
     else if (keycode == W_KEY || keycode == UP_ARROW)
         ft_move_player(game, game->player.x - 1, game->player.y);
     else if (keycode == S_KEY || keycode == DOWN_ARROW)
@@ -99,5 +94,4 @@ int ft_handel_keypress(int keycode, t_game *game)
     else if (keycode == D_KEY || keycode == RIGHT_ARROW)
         ft_move_player(game, game->player.x, game->player.y + 1);
     return (0);
-    
 }

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:01:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 17:14:36 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 18:22:24 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void    ft_render_map(t_game *game)
     int j;
     
     i = 0;
-    mlx_clear_window(game->mlxptr, game->window);
     while (i < game->map.rows)
     {
         j = 0;
