@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:27:56 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 23:24:06 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 15:35:44 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,6 @@ void ft_columns_num(t_game *game)
     }
 }
 
-// t_enemy *ft_create_enemy(int x, int y, int direction)
-// {
-//     t_enemy *new_enemy = malloc(sizeof(t_enemy));
-//     if (!new_enemy)
-//         return NULL;
-
-//     new_enemy->x = x;          // Initialize x position
-//     new_enemy->y = y;          // Initialize y position
-//     new_enemy->direction = direction; // Initialize direction
-//     new_enemy->next = NULL;    // Initialize next pointer
-
-//     return new_enemy;
-// }
-
-
 void ft_init_game_components(t_game *game)
 {
     int i;
@@ -104,16 +89,7 @@ void ft_init_game_components(t_game *game)
                 game->exit.y = i;
             }
             else if (game->map.map[j][i] == 'M')
-            {
-                // new_enemy = ft_create_enemy(i, j, 1); // Initialize enemy at (i, j) with direction 1
-                // if (!new_enemy)
-                // {
-                //     ft_freemap(game);
-                //     ft_error_msg("Memory allocation failed for enemy.", game);
-                // }
-                // new_enemy->next = game->enemy; // Link to the existing list
-                // game->enemy = new_enemy;
-                
+            {                
                 new_enemy = malloc(sizeof(t_enemy));
                 if (!new_enemy)
                 {

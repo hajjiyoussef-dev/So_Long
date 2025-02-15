@@ -13,7 +13,7 @@ SRC_BON = ./Bonus/so_long_bonus.c ./Bonus/get_next_line.c ./Bonus/get_next_line_
 		./Bonus/ft_split.c ./Bonus/ft_render_map_bonus.c ./Bonus/ft_init_and_pars_map_bonus.c \
 		./Bonus/ft_init_and_pars_map_help_bonus.c ./Bonus/ft_init_mlx_bonus.c ./Bonus/ft_error_msg_bonus.c \
 		./Bonus/pars_of_map_bonus.c ./Bonus/ft_handel_keypress_bonus.c ./Bonus/ft_free_bonus.c \
-		./Bonus/ft_print_all_bonus.c ./Bonus/ft_enemy_handel.c
+		./Bonus/ft_print_all_bonus.c ./Bonus/ft_enemy_handel.c ./Bonus/ft_render_map_help_bonus.c \
 
 OBJC_BON = $(SRC_BON:.c=.o)
 

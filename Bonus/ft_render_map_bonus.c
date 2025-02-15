@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:25:42 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 22:10:39 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 17:34:29 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void ft_draw_player(t_game *game, int x, int y)
 
 void ft_draw_collec(t_game *game, int x, int y)
 {
-    mlx_put_image_to_window(game->mlxptr, game->window, game->collect_img, (x * TILE_SIZE), (y * TILE_SIZE));
+    void *current_collect_img;
+
+    current_collect_img = game->arr_collect_frames[game->current_collect_frame];
+    mlx_put_image_to_window(game->mlxptr, game->window, current_collect_img, (x * TILE_SIZE), (y * TILE_SIZE));
 }
 
 void ft_draw_exit(t_game *game, int x , int y)
@@ -50,7 +53,7 @@ void    ft_render_map(t_game *game)
     int i = 0;
     int j;
     
-    mlx_clear_window(game->mlxptr, game->window);
+    //aaaaaaaa(game->mlxptr, game->window);
     
     while (i < game->map.rows)
     {

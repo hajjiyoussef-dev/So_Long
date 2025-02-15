@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:47 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/14 16:53:28 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/15 16:42:40 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void ft_load_images(t_game *game)
     int window_height = game->map.rows * TILE_SIZE;
      game->wall_img = mlx_xpm_file_to_image(game->mlxptr, WALL_XPM, &img_withe, &img_height);
     //game->wall_img = 0;
-    game->collect_img = mlx_xpm_file_to_image(game->mlxptr, COINS_XPM, &img_withe, &img_height);
+   // game->collect_img = mlx_xpm_file_to_image(game->mlxptr, COINS_XPM, &img_withe, &img_height);
     game->exit_closed_img = mlx_xpm_file_to_image(game->mlxptr, EXIT_CLOSED_XPM, &img_withe, &img_height);
     game->exit_open_img = mlx_xpm_file_to_image(game->mlxptr, OPEN_EXIT_XPM, &img_withe, &img_height);  
     game->player_img = mlx_xpm_file_to_image(game->mlxptr, PLAYER_XPM, &img_withe, &img_height);
     game->floor_img = mlx_xpm_file_to_image(game->mlxptr, FLOOR_XPM, &img_withe, &img_height);
     game->enemy_img = mlx_xpm_file_to_image(game->mlxptr,ENEMY_XPM ,&img_withe, &img_height);
     if (!game->wall_img || !game->player_img || !game->exit_closed_img 
-        || !game->exit_open_img || !game->collect_img || !game->floor_img || !game->enemy_img) {
+        || !game->exit_open_img || !game->floor_img || !game->enemy_img) {
         ft_mlxfree(game);
         ft_freemap(game);
         ft_error_msg("Failed to load images.", game);
