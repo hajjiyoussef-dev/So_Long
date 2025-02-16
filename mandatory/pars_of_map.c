@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:40:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/16 23:06:13 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 00:20:04 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,8 @@ void	ft_validate_map(t_game *game)
 	int	i;
 	int	j;
 
-	palyer_count = 0;
-	exit_count = 0;
-	colle_count = 0;
 	i = 0;
+	(1) && (palyer_count = 0, exit_count = 0, colle_count = 0);
 	validate_map_conditions(game);
 	while (i < game->map.rows)
 	{

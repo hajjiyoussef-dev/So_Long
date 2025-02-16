@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/16 22:55:13 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 00:09:34 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,30 +47,16 @@ void	ft_is_empty(char *map, t_game *game)
 		{
 			free(map);
 			ft_error_msg("Invalid map. The map has an \
-				empty line in the middle.",
-				game);
+				empty line in the middle.", game);
 		}
 		i++;
 	}
 }
 
-void	ft_columns_num(t_game *game, char *map_help)
-{
-	if (map_help == NULL || ft_strlen(map_help) == 0)
-		ft_error_msg("The map is empty or invalid.", game);
-	game->map.map = ft_split(map_help, '\n');
-	free(map_help);
-	if (game->map.rows > 0)
-		game->map.cols = ft_strlen(game->map.map[0]);
-	else
-		ft_error_msg("Invalid map: The map has no rows.", game);
-}
-
 void	ft_init_game_components(t_game *game)
 {
-	int				i;
-	int				j;
-	t_collectible	*new_collectible;
+	int	i;
+	int	j;
 
 	j = 0;
 	while (j < game->map.rows)
@@ -89,24 +75,25 @@ void	ft_init_game_components(t_game *game)
 				game->exit.y = j;
 			}
 			else if (game->map.map[j][i] == 'C')
-			{
-				new_collectible = malloc(sizeof(t_collectible));
-				if (!new_collectible)
-				{
-					ft_freemap(game);
-					ft_error_msg("Memory allocation failed for collectible.",
-						game);
-				}
-				new_collectible->x = i;
-				new_collectible->y = j;
-				new_collectible->next = game->collect;
-				game->collect = new_collectible;
-				game->total_collectibles++;
-			}
+				ft_create_new_collec(game, &i, &j);
 			i++;
 		}
 		j++;
 	}
+}
+
+void	ft_columns_num(t_game *game, char *map_help)
+{
+	if (map_help == NULL || ft_strlen(map_help) == 0)
+		ft_error_msg("The map is empty or invalid.", game);
+	game->map.map = ft_split(map_help, '\n');
+	free(map_help);
+	if (game->map.rows > 0)
+		game->map.cols = ft_strlen(game->map.map[0]);
+	else
+		ft_error_msg("Invalid map: The map has no rows.", game);
+	ft_validate_map(game);
+	ft_init_game_components(game);
 }
 
 void	ft_init_mape(char **argv, t_game *game)
@@ -116,7 +103,6 @@ void	ft_init_mape(char **argv, t_game *game)
 	char	*line_map;
 	int		i;
 
-	i = 0;
 	map_read = open(argv[1], O_RDONLY);
 	if (map_read == -1)
 		ft_error_msg("The Map couldn't be opened. Does the Map exist?", game);
@@ -135,9 +121,6 @@ void	ft_init_mape(char **argv, t_game *game)
 	}
 	if (!line_map && i == 0)
 		ft_error_msg("Error the map is empty or invalid.", game);
-	close(map_read);
-	ft_is_empty(map_help, game);
+	(close(map_read), ft_is_empty(map_help, game));
 	ft_columns_num(game, map_help);
-	ft_validate_map(game);
-	ft_init_game_components(game);
 }

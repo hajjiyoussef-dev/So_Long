@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:30:06 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/16 22:50:25 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/16 23:32:48 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,21 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		i++;
 	}
 	return (dest);
+}
+
+void	ft_create_new_collec(t_game *game, int *i, int *j)
+{
+	t_collectible	*new_collectible;
+
+	new_collectible = malloc(sizeof(t_collectible));
+	if (!new_collectible)
+	{
+		ft_freemap(game);
+		ft_error_msg("Memory allocation failed for collectible.", game);
+	}
+	new_collectible->x = *i;
+	new_collectible->y = *j;
+	new_collectible->next = game->collect;
+	game->collect = new_collectible;
+	game->total_collectibles++;
 }

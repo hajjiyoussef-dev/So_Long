@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/16 23:07:26 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/16 23:49:15 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ typedef struct s_game
 }							t_game;
 
 void						ft_error_msg(char *str, t_game *game);
+void						ft_start_read(char **argv, int map_read,
+								char *map_help, t_game *game);
 
 int							ft_strlen(const char *s);
 char						*ft_strdup(const char *s1);
@@ -111,6 +113,7 @@ char						**ft_split(char const *s, char c);
 void						ft_pars_argement(int argc, char **argv,
 								t_game *game);
 void						ft_init_mape(char **argv, t_game *game);
+void						ft_create_new_collec(t_game *game, int *i, int *j);
 
 void						ft_validate_map(t_game *game);
 void						find_player_position(t_game *game, int *player_x,
