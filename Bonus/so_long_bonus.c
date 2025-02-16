@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:53:56 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 23:00:29 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/16 22:35:05 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int ft_game_loop(t_game *game)
     static int frame_count = 0;
     int need_redraw = 0;
     
-    if (frame_count % 200 == 0)
+    if (frame_count % 500 == 0)
     {
         ft_move_enemy(game);
         need_redraw = 1;
     }
-    frame_count++;
+    frame_count = (frame_count + 1) % 10000;
     game->frame_counter++;
     if (game->frame_counter >= 10)
     {

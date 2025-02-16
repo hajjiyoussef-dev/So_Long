@@ -92,7 +92,7 @@ static char	**help_split(const char *s, char c, char **string)
 char	**ft_split(char const *s, char c)
 {
 	char	**string;
-	
+
 	if (!s)
 		return (NULL);
 	string = (char **)malloc((count_word(s, c) + 1) * sizeof(char *));

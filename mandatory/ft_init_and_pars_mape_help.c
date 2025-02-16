@@ -6,32 +6,31 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:30:06 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 18:49:54 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/16 22:50:25 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 int	ft_strlen(const char *s)
 {
 	int	i;
 
 	i = 0;
-
 	while (s[i] != '\0')
 	{
 		i++;
 	}
 	return (i);
 }
+
 char	*ft_strdup(const char *s1)
 {
 	char	*ptr;
 	size_t	i;
 
 	i = 0;
-	ptr = (char *) malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!ptr)
 		return (NULL);
 	while (s1[i])
@@ -42,7 +41,6 @@ char	*ft_strdup(const char *s1)
 	ptr[i] = '\0';
 	return (ptr);
 }
-
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
@@ -55,8 +53,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	while (i < len && haystack[i] != '\0')
 	{
 		j = 0;
-		while (needle[j] != '\0'
-			&& haystack[i + j] == needle[j] && (i + j) < len)
+		while (needle[j] != '\0' && haystack[i + j] == needle[j] && (i
+				+ j) < len)
 		{
 			j++;
 		}
@@ -66,6 +64,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
+
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*d;
@@ -86,4 +85,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-

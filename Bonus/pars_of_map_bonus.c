@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:22:45 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 22:04:11 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/16 22:04:09 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,30 @@ int ft_is_valid_characters(t_game *game)
 
 void ft_floo_fill(char **map_copy, int x, int y, int rows, int clos)
 {
+    int enemy_count;
+    int j;
+    
+    enemy_count = 0;
+    j = 0;
     if (x < 0 || y < 0 ||  x >= rows || y >= clos)
         return ;
-    if (map_copy[x][y] == '1' || map_copy[x][y] == 'F')
+    if (map_copy[x][y] == '1' || map_copy[x][y] == 'F' )
         return ;
+    if (map_copy[x][y] == 'M')
+    {
+        if ((y > 0 && (map_copy[x][y - 1] == '1' || map_copy[x][y - 1] == 'C')) ||
+            (y < clos - 1 && (map_copy[x][y + 1] == '1' || map_copy[x][y + 1] == 'C')) 
+            ||(map_copy[x][y + 2] == '1' || map_copy[x][y + 2] == 'C'))
+            return;
+    }
+    while (j < clos)
+    {
+        if (map_copy[x][j] == 'M')
+            enemy_count++;
+        j++;
+    }
+    if (enemy_count > 2)
+        return;
     map_copy[x][y] = 'F';
     ft_floo_fill(map_copy, x + 1, y, rows, clos); // down
     ft_floo_fill(map_copy, x - 1, y , rows, clos); // up

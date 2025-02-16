@@ -5,7 +5,7 @@ SRC = ./mandatory/so_long.c ./mandatory/get_next_line.c ./mandatory/get_next_lin
 		./mandatory/ft_split.c ./mandatory/ft_render_map.c ./mandatory/ft_init_and_pars_mape.c \
 		./mandatory/ft_init_and_pars_mape_help.c ./mandatory/ft_init_mlx.c ./mandatory/ft_error_msg.c \
 		./mandatory/pars_of_map.c ./mandatory/ft_handel_keypress.c ./mandatory/ft_free.c \
-		./mandatory/ft_print_all.c
+		./mandatory/ft_print_all.c ./mandatory/pars_of_map_help.c 
 
 OBJC = $(SRC:.c=.o)
 

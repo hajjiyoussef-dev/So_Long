@@ -6,28 +6,29 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:05:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 18:24:51 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/16 22:53:34 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
-void ft_putchar(char c)
+void	ft_putstr(char *str)
 {
-    write(1, &c, 1);
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
 }
-void ft_putstr(char *str)
-{
-    int i;
-    i = 0;
-    
-    while (str[i] != '\0')
-    {
-        write(1, &str[i], 1);
-        i++;
-    }
-}
+
 void	ft_putnbr(int nbr)
 {
 	if (nbr == -2147483648)
@@ -53,9 +54,9 @@ void	ft_putnbr(int nbr)
 	}
 }
 
-void ft_win()
+void	ft_win(void)
 {
-        ft_putstr("\n\n\
+	ft_putstr("\n\n\
 ██████████████████████████████████████████████████████████████████\n\
 ██                                                              ██\n\
 ██  ███  ███  ██████  ██    ██     ██      ██ ██ ██    ██   ██  ██\n\
@@ -68,12 +69,12 @@ void ft_win()
 ");
 }
 
-int ft_close_game(t_game *game)
+int	ft_close_game(t_game *game)
 {
 	ft_freemap(game);
-    ft_freecollectible(game);
-    ft_putstr("CLOSED\n");
-    ft_mlxfree(game);
-    free(game);
-    exit(0);
+	ft_freecollectible(game);
+	ft_putstr("CLOSED\n");
+	ft_mlxfree(game);
+	free(game);
+	exit(0);
 }
