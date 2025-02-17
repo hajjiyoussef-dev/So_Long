@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:01:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 15:42:54 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 23:14:06 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	ft_draw_player(t_game *game, int x, int y)
 {
-	mlx_put_image_to_window(game->mlxptr, game->window, game->player_img, (x
-			* TILE_SIZE), (y * TILE_SIZE));
+	if (game->over_it.over_it == 'Q')
+		mlx_put_image_to_window(game->mlxptr, game->window,
+			game->player_over_it_img, (x * TILE_SIZE), (y * TILE_SIZE));
+	else
+		mlx_put_image_to_window(game->mlxptr, game->window, game->player_img, (x
+				* TILE_SIZE), (y * TILE_SIZE));
 }
 
 void	ft_draw_collec(t_game *game, int x, int y)

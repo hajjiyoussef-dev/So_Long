@@ -6,77 +6,32 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:18:25 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 21:49:01 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 20:35:54 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
-    write(1, &c, 1);
+	write(1, &c, 1);
 }
-void ft_putstr(char *str)
-{
-    int i;
-    i = 0;
-    
-    while (str[i] != '\0')
-    {
-        write(1, &str[i], 1);
-        i++;
-    }
-}
-static int	num_len(int n)
-{
-	int	len;
 
-	len = 0;
-	if (n <= 0)
-		len = 1;
-	else
-		len = 0;
-	while (n != 0)
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		n = n / 10;
-		len++;
+		write(1, &str[i], 1);
+		i++;
 	}
-	return (len);
 }
 
-char	*ft_itoa(int n)
+void	ft_win(void)
 {
-	unsigned int	num;
-	char			*str;
-	int				len;
-
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	len = num_len(n);
-	str = (char *) malloc((len + 1));
-	if (!str)
-		return (NULL);
-	str[len] = '\0';
-	if (n < 0)
-		num = (n * -1);
-	else
-		num = n;
-	if (n < 0)
-		str[0] = '-';
-	while (len-- && num)
-	{
-		str[len] = (num % 10) + '0';
-		num = num / 10;
-	}
-	if (n == 0)
-		str[0] = '0';
-	return (str);
-}
-
-void ft_win()
-{
-        ft_putstr("\n\n\
+	ft_putstr("\n\n\
 ██████████████████████████████████████████████████████████████████\n\
 ██                                                              ██\n\
 ██  ███  ███  ██████  ██    ██     ██      ██ ██ ██    ██   ██  ██\n\
@@ -89,9 +44,9 @@ void ft_win()
 ");
 }
 
-void ft_lose()
+void	ft_lose(void)
 {
-		ft_putstr("\n\n\
+	ft_putstr("\n\n\
 █████████████████████████████████████████████████████████████████████\n\
 ██                                                                 ██\n\
 ██  ███  ███  ██████  ██    ██     ██      ██████   ██████ ██████  ██\n\

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 15:43:36 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 23:13:05 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define OPEN_EXIT_XPM "textures/open-exit.xpm"
 # define PLAYER_XPM "textures/finn.xpm"
 # define FLOOR_XPM "textures/floor.xpm"
+# define PLAYER_O_IT "textures/finn_exit.xpm"
 
 typedef struct s_player
 {
@@ -84,6 +85,7 @@ typedef struct s_game
 	void					*exit_closed_img;
 	void					*collect_img;
 	void					*floor_img;
+	void					*player_over_it_img;
 	int						collected;
 	int						total_collectibles;
 	int						moves;

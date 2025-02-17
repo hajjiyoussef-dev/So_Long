@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:38:33 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 15:59:47 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 23:13:20 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	ft_load_img_help(t_game *game)
 			&img_withe, &img_height);
 	game->floor_img = mlx_xpm_file_to_image(game->mlxptr, FLOOR_XPM, &img_withe,
 			&img_height);
+	game->player_over_it_img = mlx_xpm_file_to_image(game->mlxptr, PLAYER_O_IT,
+			&img_withe, &img_height);
 }
 
 void	ft_load_images(t_game *game)
@@ -59,7 +61,8 @@ void	ft_load_images(t_game *game)
 	window_height = game->map.rows * TILE_SIZE;
 	ft_load_img_help(game);
 	if (!game->wall_img || !game->player_img || !game->exit_closed_img
-		|| !game->exit_open_img || !game->collect_img || !game->floor_img)
+		|| !game->exit_open_img || !game->collect_img || !game->floor_img
+		|| !game->player_over_it_img)
 	{
 		ft_mlxfree(game);
 		ft_freecollectible(game);

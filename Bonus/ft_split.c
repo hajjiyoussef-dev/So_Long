@@ -6,12 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:24:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/13 22:03:55 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 19:56:22 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
 
 static void	help_free(char **string, int i)
 {
@@ -93,7 +92,7 @@ static char	**help_split(const char *s, char c, char **string)
 char	**ft_split(char const *s, char c)
 {
 	char	**string;
-	
+
 	if (!s)
 		return (NULL);
 	string = (char **)malloc((count_word(s, c) + 1) * sizeof(char *));

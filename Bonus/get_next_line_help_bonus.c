@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "so_long_bonus.h"
-
 
 void	*ft_memcpy_get_next_line(void *dest, const void *src, size_t n)
 {

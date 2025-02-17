@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:03:24 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 23:48:49 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 23:15:56 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_cleanup_img(t_game *game)
 		mlx_destroy_image(game->mlxptr, game->exit_closed_img);
 	if (game->exit_open_img)
 		mlx_destroy_image(game->mlxptr, game->exit_open_img);
+	if (game->player_over_it_img)
+		mlx_destroy_image(game->mlxptr, game->player_over_it_img);
 }
 
 void	ft_freemap(t_game *game)
