@@ -6,11 +6,17 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:38:33 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/16 23:04:42 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 15:59:47 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_draw_wall(t_game *game, int x, int y)
+{
+	mlx_put_image_to_window(game->mlxptr, game->window, game->wall_img, (x
+			* TILE_SIZE), (y * TILE_SIZE));
+}
 
 void	ft_init_mlx(t_game *game)
 {
@@ -23,17 +29,13 @@ void	ft_init_mlx(t_game *game)
 	}
 }
 
-void	ft_load_images(t_game *game)
+void	ft_load_img_help(t_game *game)
 {
 	int	img_withe;
 	int	img_height;
-	int	window_width;
-	int	window_height;
 
 	img_withe = TILE_SIZE;
 	img_height = TILE_SIZE;
-	window_width = game->map.cols * TILE_SIZE;
-	window_height = game->map.rows * TILE_SIZE;
 	game->wall_img = mlx_xpm_file_to_image(game->mlxptr, WALL_XPM, &img_withe,
 			&img_height);
 	game->collect_img = mlx_xpm_file_to_image(game->mlxptr, COINS_XPM,
@@ -46,6 +48,16 @@ void	ft_load_images(t_game *game)
 			&img_withe, &img_height);
 	game->floor_img = mlx_xpm_file_to_image(game->mlxptr, FLOOR_XPM, &img_withe,
 			&img_height);
+}
+
+void	ft_load_images(t_game *game)
+{
+	int	window_width;
+	int	window_height;
+
+	window_width = game->map.cols * TILE_SIZE;
+	window_height = game->map.rows * TILE_SIZE;
+	ft_load_img_help(game);
 	if (!game->wall_img || !game->player_img || !game->exit_closed_img
 		|| !game->exit_open_img || !game->collect_img || !game->floor_img)
 	{

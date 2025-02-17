@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 22:19:02 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 20:07:04 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:59:14 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,16 @@ void ft_exit_game_losing(t_game *game)
 
 void ft_move_enemy(t_game *game)
 {
-    t_enemy *enemy ;
+    t_enemy *enemy;
     int new_x;
     int new_y;
     int moved;
 
-    enemy = game->enemy;
-    moved = 0;
+    (moved = 0, enemy = game->enemy);
     while (enemy)
     {
         new_x = enemy->x;
         new_y = enemy->y + enemy->direction;
-        if (game->map.map[enemy->x][enemy->y - 1] == '1' &&
-            game->map.map[enemy->x][enemy->y + 1] == '1')
-        {
-            enemy = enemy->next;
-            continue;
-        }
         if (game->map.map[new_x][new_y] == 'P')
             ft_exit_game_losing(game);
         if (game->map.map[new_x][new_y] == '0')

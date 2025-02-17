@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:30:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 22:58:57 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:57:50 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ int ft_exit_game(t_game *game)
     free(game);
     exit(0);
 }
+
 void ft_call_over_it(t_game *game, int x, int y)
 {
-    game->over_it.over_it = '0';
-    game->over_it.x = -1;
-    game->over_it.y = -1;
     game->over_it.over_it = 'Q';
     game->over_it.x = x;
     game->over_it.y = y;
@@ -42,11 +40,8 @@ void ft_call_over_it(t_game *game, int x, int y)
     game->player.y = y ;
     game->map.map[game->player.x][game->player.y] = 'P';
     game->moves++;
-    // ft_putchar('\n');
-    // ft_putstr("number of moves : ");
-    // ft_putnbr(game->moves);
-    
 }
+
 void ft_call_render_map(t_game *game, int x, int y)
 {
     game->map.map[game->player.x][game->player.y] = '0';
@@ -92,12 +87,10 @@ void ft_move_player(t_game *game, int x, int y)
     ft_call_render_map(game, x, y);
 }
 
-
 int ft_handel_keypress(int keycode, t_game *game)
 {
-    
     if (keycode == ESC_KEY)
-        ft_exit_game(game);
+        ft_close_game(game);
     else if (keycode == W_KEY || keycode == UP_ARROW)
         ft_move_player(game, game->player.x - 1, game->player.y);
     else if (keycode == S_KEY || keycode == DOWN_ARROW)
@@ -106,6 +99,15 @@ int ft_handel_keypress(int keycode, t_game *game)
         ft_move_player(game, game->player.x, game->player.y - 1);
     else if (keycode == D_KEY || keycode == RIGHT_ARROW)
         ft_move_player(game, game->player.x, game->player.y + 1);
+    else if (keycode == MINUS_KEY)
+    {
+        if (game->speed <= 5000)
+            game->speed += 400;
+    }
+    else if (keycode == PLUS_KRY)
+     {
+        if (game->speed > 100)
+            game->speed -= 100;
+     }
     return (0);
-    
 }

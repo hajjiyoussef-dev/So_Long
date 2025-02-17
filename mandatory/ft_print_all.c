@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:05:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/16 22:53:34 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:55:56 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_close_game(t_game *game)
 {
 	ft_freemap(game);
 	ft_freecollectible(game);
-	ft_putstr("CLOSED\n");
+	ft_putstr("GAME CLOSED :( \n");
 	ft_mlxfree(game);
 	free(game);
 	exit(0);

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/16 23:49:15 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 15:43:36 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void						check_map_elements(int p_count, int e_count,
 
 void						ft_init_mlx(t_game *game);
 void						ft_load_images(t_game *game);
+void						ft_draw_wall(t_game *game, int x, int y);
 void						ft_render_map(t_game *game);
 
 int							ft_handel_keypress(int keycode, t_game *game);

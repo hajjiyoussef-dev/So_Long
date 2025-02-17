@@ -6,56 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:40:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 00:20:04 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 16:11:23 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_is_rectanguler(t_game *game)
-{
-	int	i;
-	int	width;
-
-	width = ft_strlen(game->map.map[0]);
-	i = 0;
-	if (game->map.rows <= 0)
-		return (0);
-	while (i < game->map.rows)
-	{
-		if (ft_strlen(game->map.map[i]) != width)
-		{
-			ft_freemap(game);
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	ft_is_closed_by_walls(t_game *game)
-{
-	int	i;
-	int	width;
-
-	width = ft_strlen(game->map.map[0]);
-	i = 0;
-	while (i < width)
-	{
-		if (game->map.map[0][i] != '1' || game->map.map[game->map.rows
-			- 1][i] != '1')
-			return (ft_freemap(game), 0);
-		i++;
-	}
-	i = 0;
-	while (i < game->map.rows)
-	{
-		if (game->map.map[i][0] != '1' || game->map.map[i][width - 1] != '1')
-			return (ft_freemap(game), 0);
-		i++;
-	}
-	return (1);
-}
 
 int	ft_is_valid_characters(t_game *game)
 {
@@ -82,17 +37,17 @@ int	ft_is_valid_characters(t_game *game)
 	return (1);
 }
 
-void	ft_floo_fill(char **map_copy, int x, int y, int rows, int clos)
+void	ft_floo_fill(char **map_copy, int x, int y, t_game *game)
 {
-	if (x < 0 || y < 0 || x >= rows || y >= clos)
+	if (x < 0 || y < 0 || x >= game->map.rows || y >= game->map.cols)
 		return ;
 	if (map_copy[x][y] == '1' || map_copy[x][y] == 'F')
 		return ;
 	map_copy[x][y] = 'F';
-	ft_floo_fill(map_copy, x + 1, y, rows, clos);
-	ft_floo_fill(map_copy, x - 1, y, rows, clos);
-	ft_floo_fill(map_copy, x, y + 1, rows, clos);
-	ft_floo_fill(map_copy, x, y - 1, rows, clos);
+	ft_floo_fill(map_copy, x + 1, y, game);
+	ft_floo_fill(map_copy, x - 1, y, game);
+	ft_floo_fill(map_copy, x, y + 1, game);
+	ft_floo_fill(map_copy, x, y - 1, game);
 }
 
 int	ft_is_valid_path(t_game *game)
@@ -116,7 +71,7 @@ int	ft_is_valid_path(t_game *game)
 		ft_error_msg("Memory allocation failed for map copy.", game);
 	}
 	copy_map(game, map_copy);
-	ft_floo_fill(map_copy, player_x, player_y, game->map.rows, game->map.cols);
+	ft_floo_fill(map_copy, player_x, player_y, game);
 	if (!check_valid_path(game, map_copy))
 		return (ft_free_map_copy(map_copy, game->map.rows), ft_freemap(game),
 			0);

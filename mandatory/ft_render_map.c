@@ -6,17 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:01:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 18:22:24 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 15:42:54 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_draw_wall(t_game *game, int x, int y)
-{
-	mlx_put_image_to_window(game->mlxptr, game->window, game->wall_img, (x
-			* TILE_SIZE), (y * TILE_SIZE));
-}
 
 void	ft_draw_player(t_game *game, int x, int y)
 {

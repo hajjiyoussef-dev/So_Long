@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:53:56 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/16 22:35:05 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:55:04 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,21 @@
 void ft_printOn_window(t_game *game)
 {
     char *move_conut;
+    char *speed;
 
     move_conut = ft_itoa(game->moves);
+    speed = ft_itoa(game->speed);
     if (move_conut)
     {
-        mlx_string_put(game->mlxptr, game->window, 20, 30, 0xFFFF00, "Moves : ");
-        mlx_string_put(game->mlxptr, game->window, 70, 30, 0xFFFF00, move_conut);
+        mlx_string_put(game->mlxptr, game->window, 20, 20, 0xFFFF00, "Moves : ");
+        mlx_string_put(game->mlxptr, game->window, 70, 20, 0xFFFF00, move_conut);
         free(move_conut);
+    }
+    if (move_conut)
+    {
+        mlx_string_put(game->mlxptr, game->window, 20, 40, 0x0000FF, "enemy speed : ");
+        mlx_string_put(game->mlxptr, game->window, 105, 40, 0x0000FF, speed);
+        free(speed);
     }
 }
 
@@ -30,7 +38,7 @@ int ft_game_loop(t_game *game)
     static int frame_count = 0;
     int need_redraw = 0;
     
-    if (frame_count % 500 == 0)
+    if (frame_count % game->speed == 0)
     {
         ft_move_enemy(game);
         need_redraw = 1;
@@ -58,7 +66,7 @@ void ft_start_game(t_game *game)
     ft_render_map(game);
     mlx_loop_hook(game->mlxptr, ft_game_loop, game);
     mlx_hook(game->window, 2, 1L << 0, ft_handel_keypress, game);
-    mlx_hook(game->window, 17, 0, ft_exit_game, game);
+    mlx_hook(game->window, 17, 0, ft_close_game, game);
     mlx_loop(game->mlxptr);
 }
 
@@ -84,6 +92,7 @@ int main(int argc, char **argv)
     game->exit.x = -1;
     game->exit.y = -1;
     game->enemy = NULL;
+    game->speed = 500;
     ft_init_mape(&argv[0], game);
     ft_start_game(game);
     return (0);

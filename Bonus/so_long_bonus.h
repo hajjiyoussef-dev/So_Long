@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:54:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/15 23:03:25 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:52:45 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 #define DOWN_ARROW  65364  
 #define LEFT_ARROW  65361  
 #define RIGHT_ARROW 65363  
+#define PLUS_KRY 65451  
+#define MINUS_KEY 65453  
 
 #define WALL_XPM            "textures/wall.xpm"
 #define COINS_XPM0           "textures/coins_bag0.xpm"
@@ -102,6 +104,7 @@ typedef struct s_game {
     int win_lose;
     int current_collect_frame;
     int frame_counter;
+    int speed;
     
     
     t_over_it over_it;          
@@ -114,6 +117,7 @@ typedef struct s_game {
 
 
 void ft_error_msg(char *str, t_game *game);
+int	ft_close_game(t_game *game);
 
 int	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
