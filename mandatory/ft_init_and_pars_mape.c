@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:48:36 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 00:09:34 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/19 13:36:18 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ void	ft_init_mape(char **argv, t_game *game)
 		game->map.rows++;
 		i++;
 	}
+	close(map_read);
 	if (!line_map && i == 0)
 		ft_error_msg("Error the map is empty or invalid.", game);
-	(close(map_read), ft_is_empty(map_help, game));
-	ft_columns_num(game, map_help);
+	(ft_is_empty(map_help, game), ft_columns_num(game, map_help));
 }

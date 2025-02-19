@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:30:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 18:05:38 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:11:52 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_exit_game(t_game *game)
 		free(help_two);
 	}
 	ft_win();
-	ft_mlxfree(game);
+	ft_mlxfree(game, 1);
 	free(game);
 	exit(0);
 }

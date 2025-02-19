@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 16:22:25 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 20:37:27 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:13:05 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_load_collect_img(t_game *game)
 	if (!game->arr_collect_frames[0] || !game->arr_collect_frames[1]
 		|| !game->arr_collect_frames[2] || !game->arr_collect_frames[3])
 	{
-		ft_mlxfree(game);
+		ft_mlxfree(game, 1);
 		ft_freemap(game);
 		ft_error_msg("Failed to load coin animation frames.", game);
 	}

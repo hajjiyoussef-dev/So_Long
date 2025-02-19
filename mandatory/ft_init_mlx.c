@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:38:33 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 23:13:20 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:38:27 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,31 @@ void	ft_load_img_help(t_game *game)
 			&img_withe, &img_height);
 }
 
+void	ft_check_map_size(t_game *game)
+{
+	size_t	map_size;
+
+	map_size = 0;
+	map_size = ft_strlen(game->map.map[0]);
+	if (map_size > 2560)
+	{
+		if (game->mlxptr)
+		{
+			mlx_destroy_display(game->mlxptr);
+			free(game->mlxptr);
+		}
+		ft_freecollectible(game);
+		ft_freemap(game);
+		ft_error_msg("Failed to load map is too long.", game);
+	}
+}
+
 void	ft_load_images(t_game *game)
 {
 	int	window_width;
 	int	window_height;
 
+	ft_check_map_size(game);
 	window_width = game->map.cols * TILE_SIZE;
 	window_height = game->map.rows * TILE_SIZE;
 	ft_load_img_help(game);
@@ -73,10 +93,9 @@ void	ft_load_images(t_game *game)
 			"so_long");
 	if (!game->window)
 	{
-		mlx_destroy_display(game->mlxptr);
 		ft_freemap(game);
 		ft_freecollectible(game);
-		free(game->mlxptr);
+		ft_mlxfree(game);
 		ft_error_msg("Failed to create window.", game);
 	}
 }

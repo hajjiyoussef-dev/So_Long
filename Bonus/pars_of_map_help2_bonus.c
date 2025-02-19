@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:28:45 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 19:29:05 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/18 21:51:28 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,32 @@ int	ft_is_closed_by_walls(t_game *game)
 		i++;
 	}
 	return (1);
+}
+
+int	ft_enemy_blocked(char **map_copy, int x, int y, t_game *game)
+{
+	if (map_copy[x][y] != 'M')
+		return (0);
+	if ((y > 0 && (map_copy[x][y - 1] == '1' || map_copy[x][y - 1] == 'C'))
+		|| (y < game->map.cols - 1 && (map_copy[x][y + 1] == '1'
+				|| map_copy[x][y + 1] == 'C')) || (y < game->map.cols - 2
+			&& (map_copy[x][y + 2] == '1' || map_copy[x][y + 2] == 'C')))
+		return (1);
+	return (0);
+}
+
+int	ft_count_enemies(char **map_copy, int x, t_game *game)
+{
+	int	j;
+	int	enemy_count;
+
+	j = 0;
+	enemy_count = 0;
+	while (j < game->map.cols)
+	{
+		if (map_copy[x][j] == 'M')
+			enemy_count++;
+		j++;
+	}
+	return (enemy_count);
 }

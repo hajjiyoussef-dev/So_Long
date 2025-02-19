@@ -21,30 +21,39 @@ OBJC_BON = $(SRC_BON:.c=.o)
 
 INC = -I ./mandatory -I ./minilibx-linux
 INC_BON = -I ./Bonus -I ./minilibx-linux
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+MLX_DIR = ./minilibx-linux
+CFLAGS = -Wall -Wextra -Werror 
 CC = cc
 
-MLX_FLAGS = -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+MLX_FLAGS = -L ./minilibx-linux -lmlx -lXext -lX11
 
 
-all: ${NAME}
+all: $(MLX_LIB) ${NAME}
 
-Bonus: $(NAME_BON)
+Bonus: $(MLX_LIB) $(NAME_BON)
 
 ${NAME} : ${OBJC}
+	make -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(OBJC)  $(MLX_FLAGS) -o $(NAME)
+
+${NAME_BON} : ${OBJC_BON}
+	make -C $(MLX_DIR)
+	$(CC) $(CFLAGS)  $(OBJC_BON)  $(MLX_FLAGS) -o $(NAME_BON)
 
 %.o: %.c 
 	$(CC)  $(CFLAGS) $(INC) -c $<  -o $@
 
+Bonus/%.o: Bonus/%.c 
+	$(CC)  $(CFLAGS) $(INC_BON) -c $<  -o $@
 
-${NAME_BON} : ${OBJC_BON}
-	$(CC) $(CFLAGS) $(OBJC_BON)  $(MLX_FLAGS) -o $(NAME_BON)
+
 
 clean:
 	rm -rf  $(OBJC) $(OBJC_BON)
+	make -C $(MLX_DIR) clean
 
 fclean: clean 
 	rm -rf $(NAME) $(NAME_BON)
+	make -C $(MLX_DIR) fclean
 
 re :  fclean all 

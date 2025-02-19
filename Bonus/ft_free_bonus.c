@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:26:34 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 23:17:14 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:37:45 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 
 void	ft_cleanup_img(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (game->arr_collect_frames[i])
-		{
-			mlx_destroy_image(game->mlxptr, game->arr_collect_frames[i]);
-			game->arr_collect_frames[i] = NULL;
-		}
-		i++;
-	}
 	if (game->wall_img)
 		mlx_destroy_image(game->mlxptr, game->wall_img);
 	if (game->floor_img)
@@ -83,8 +71,23 @@ void	ft_free_map_copy(char **map_copy, int rows)
 	free(map_copy);
 }
 
-void	ft_mlxfree(t_game *game)
+void	ft_mlxfree(t_game *game, int cleanup)
 {
+	int	i;
+
+	i = 0;
+	if (cleanup == 1)
+	{
+		while (i < 4)
+		{
+			if (game->arr_collect_frames[i])
+			{
+				mlx_destroy_image(game->mlxptr, game->arr_collect_frames[i]);
+				game->arr_collect_frames[i] = NULL;
+			}
+			i++;
+		}
+	}
 	ft_cleanup_img(game);
 	if (game->player_over_it_img)
 		mlx_destroy_image(game->mlxptr, game->player_over_it_img);

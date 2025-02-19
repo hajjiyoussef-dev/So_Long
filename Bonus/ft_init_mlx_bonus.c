@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:47 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 22:41:21 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:57:46 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_init_mlx(t_game *game)
 	game->mlxptr = mlx_init();
 	if (!game->mlxptr)
 	{
+		ft_free_enemy(game);
 		ft_freemap(game);
 		ft_freecollectible(game);
 		ft_error_msg("Failed to initialize MiniLibX.", game);
@@ -63,6 +64,7 @@ void	ft_load_images(t_game *game)
 	int	window_width;
 	int	window_height;
 
+	ft_check_map_size(game);
 	window_width = game->map.cols * TILE_SIZE;
 	window_height = game->map.rows * TILE_SIZE;
 	ft_load_img_help(game);
@@ -70,7 +72,7 @@ void	ft_load_images(t_game *game)
 		|| !game->exit_open_img || !game->floor_img || !game->enemy_img
 		|| !game->player_over_it_img)
 	{
-		ft_mlxfree(game);
+		ft_mlxfree(game, 0);
 		ft_freemap(game);
 		ft_error_msg("Failed to load images.", game);
 	}
@@ -78,10 +80,10 @@ void	ft_load_images(t_game *game)
 			"so_long");
 	if (!game->window)
 	{
-		mlx_destroy_display(game->mlxptr);
+		ft_free_enemy(game);
 		ft_freemap(game);
 		ft_freecollectible(game);
-		free(game->mlxptr);
+		ft_mlxfree(game, 0);
 		ft_error_msg("Failed to create window.", game);
 	}
 }

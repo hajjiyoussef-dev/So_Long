@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:22:45 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 20:58:53 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/19 19:22:42 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,38 +37,19 @@ int	ft_is_valid_characters(t_game *game)
 	return (1);
 }
 
-void	ft_floo_fill(char **map_copy, int x, int y, t_game *game)
+void	ft_flood_fill(char **map_copy, int x, int y, t_game *game)
 {
-	int	enemy_count;
-	int	j;
-
-	enemy_count = 0;
-	j = 0;
-	if (x < 0 || y < 0 || x >= game->map.rows || y >= game->map.cols)
+	if (x < 0 || y < 0 || x >= game->map.rows || y >= game->map.cols
+		|| map_copy[x][y] == '1' || map_copy[x][y] == 'F')
 		return ;
-	if (map_copy[x][y] == '1' || map_copy[x][y] == 'F')
-		return ;
-	if (map_copy[x][y] == 'M')
-	{
-		if ((y > 0 && (map_copy[x][y - 1] == '1' || map_copy[x][y - 1] == 'C'))
-			|| (y < game->map.cols - 1 && (map_copy[x][y + 1] == '1'
-					|| map_copy[x][y + 1] == 'C')) || (map_copy[x][y + 2] == '1'
-				|| map_copy[x][y + 2] == 'C'))
-			return ;
-	}
-	while (j < game->map.cols)
-	{
-		if (map_copy[x][j] == 'M')
-			enemy_count++;
-		j++;
-	}
-	if (enemy_count > 2)
+	if (ft_enemy_blocked(map_copy, x, y, game) || ft_count_enemies(map_copy, x,
+			game) > 2)
 		return ;
 	map_copy[x][y] = 'F';
-	ft_floo_fill(map_copy, x + 1, y, game);
-	ft_floo_fill(map_copy, x - 1, y, game);
-	ft_floo_fill(map_copy, x, y + 1, game);
-	ft_floo_fill(map_copy, x, y - 1, game);
+	ft_flood_fill(map_copy, x + 1, y, game);
+	ft_flood_fill(map_copy, x - 1, y, game);
+	ft_flood_fill(map_copy, x, y + 1, game);
+	ft_flood_fill(map_copy, x, y - 1, game);
 }
 
 int	ft_is_valid_path(t_game *game)
@@ -92,7 +73,7 @@ int	ft_is_valid_path(t_game *game)
 		ft_error_msg("Memory allocation failed for map copy.", game);
 	}
 	copy_map(game, map_copy);
-	ft_floo_fill(map_copy, player_x, player_y, game);
+	ft_flood_fill(map_copy, player_x, player_y, game);
 	if (!check_valid_path(game, map_copy))
 		return (ft_free_map_copy(map_copy, game->map.rows), ft_freemap(game),
 			0);

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:54:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/17 23:36:47 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:10:13 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ typedef struct s_game
 	int						collected;
 	int						total_collectibles;
 	int						moves;
-	int						win_lose;
 	int						current_collect_frame;
 	int						frame_counter;
 	int						speed;
@@ -140,6 +139,7 @@ void						ft_create_new_collec(t_game *game, int *i, int *j);
 void						ft_validate_map(t_game *game);
 void						find_player_position(t_game *game, int *player_x,
 								int *player_y);
+
 void						copy_map(t_game *game, char **map_copy);
 int							check_valid_path(t_game *game, char **map_copy);
 void						validate_map_conditions(t_game *game);
@@ -149,8 +149,13 @@ int							ft_is_rectanguler(t_game *game);
 int							ft_is_closed_by_walls(t_game *game);
 int							ft_is_valid_path(t_game *game);
 int							ft_is_valid_characters(t_game *game);
+int							ft_enemy_blocked(char **map_copy, int x, int y,
+								t_game *game);
+int							ft_count_enemies(char **map_copy, int x,
+								t_game *game);
 
 void						ft_init_mlx(t_game *game);
+void						ft_check_map_size(t_game *game);
 void						ft_load_images(t_game *game);
 void						ft_render_map(t_game *game);
 void						ft_draw_empty(t_game *game, int x, int y);
@@ -159,10 +164,11 @@ void						ft_draw_enemy(t_game *game, int x, int y);
 int							ft_handel_keypress(int keycode, t_game *game);
 int							ft_exit_game(t_game *game);
 
-void						ft_mlxfree(t_game *game);
+void						ft_mlxfree(t_game *game, int cleanup);
 void						ft_freemap(t_game *game);
 void						ft_freecollectible(t_game *game);
 void						ft_free_map_copy(char **map_copy, int rows);
+void						ft_free_enemy(t_game *game);
 
 void						ft_putchar(char c);
 void						ft_putstr(char *str);
