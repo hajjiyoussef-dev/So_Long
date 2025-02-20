@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:28:45 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/18 21:51:28 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/20 17:56:00 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,31 @@ int	ft_count_enemies(char **map_copy, int x, t_game *game)
 		j++;
 	}
 	return (enemy_count);
+}
+
+void	ft_validate_map2(t_game *game)
+{
+	int	i;
+	int	j;
+	int	m_count;
+
+	i = 0;
+	m_count = 0;
+	while (i < game->map.rows)
+	{
+		j = 0;
+		while (j < ft_strlen(game->map.map[i]))
+		{
+			if (game->map.map[i][j] == 'M')
+				m_count++;
+			j++;
+		}
+		i++;
+	}
+	if (m_count < 1)
+	{
+		ft_freemap(game);
+		ft_error_msg("Invalid map: There should be at least one enemy :(",
+			game);
+	}
 }

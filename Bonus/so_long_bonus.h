@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:54:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/19 18:10:13 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/20 17:47:37 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ void						ft_init_mape(char **argv, t_game *game);
 void						ft_creat_new_enemy(t_game *game, int *i, int *j);
 void						ft_create_new_collec(t_game *game, int *i, int *j);
 void						ft_validate_map(t_game *game);
+void						ft_validate_map2(t_game *game);
 void						find_player_position(t_game *game, int *player_x,
 								int *player_y);
 

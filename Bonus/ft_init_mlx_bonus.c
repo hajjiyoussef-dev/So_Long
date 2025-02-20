@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:47 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/19 18:57:46 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/20 15:55:50 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	ft_load_images(t_game *game)
 		|| !game->exit_open_img || !game->floor_img || !game->enemy_img
 		|| !game->player_over_it_img)
 	{
-		ft_mlxfree(game, 0);
-		ft_freemap(game);
+		(ft_free_enemy(game), ft_freecollectible(game));
+		(ft_mlxfree(game, 0), ft_freemap(game));
 		ft_error_msg("Failed to load images.", game);
 	}
 	game->window = mlx_new_window(game->mlxptr, window_width, window_height,

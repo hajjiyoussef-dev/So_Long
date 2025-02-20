@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 20:38:33 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/19 18:38:27 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/20 17:29:21 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,15 @@ void	ft_load_img_help(t_game *game)
 
 void	ft_check_map_size(t_game *game)
 {
-	size_t	map_size;
+	int	map_size_h;
+	int	map_size_w;
 
-	map_size = 0;
-	map_size = ft_strlen(game->map.map[0]);
-	if (map_size > 2560)
+	map_size_w = 0;
+	map_size_w = ft_strlen(game->map.map[0]);
+	map_size_h = 0;
+	while (game->map.map[map_size_h])
+		map_size_h++;
+	if (map_size_w * TILE_SIZE > 2560 || map_size_h * TILE_SIZE > 1440)
 	{
 		if (game->mlxptr)
 		{

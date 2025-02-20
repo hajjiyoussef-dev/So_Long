@@ -40,10 +40,10 @@ ${NAME_BON} : ${OBJC_BON}
 	make -C $(MLX_DIR)
 	$(CC) $(CFLAGS)  $(OBJC_BON)  $(MLX_FLAGS) -o $(NAME_BON)
 
-%.o: %.c 
+%.o: %.c ./mandatory/so_long.h
 	$(CC)  $(CFLAGS) $(INC) -c $<  -o $@
 
-Bonus/%.o: Bonus/%.c 
+Bonus/%.o: Bonus/%.c ./Bonus/so_long_bonus.h
 	$(CC)  $(CFLAGS) $(INC_BON) -c $<  -o $@
 
 

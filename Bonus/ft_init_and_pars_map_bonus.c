@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:27:56 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/18 20:56:15 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/20 17:47:06 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	ft_columns_num(t_game *game, char *map_help)
 	else
 		ft_error_msg("Invalid map: The map has no rows.", game);
 	ft_validate_map(game);
+	ft_validate_map2(game);
 	ft_init_game_components(game);
 }
 
