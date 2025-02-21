@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:54:23 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/20 17:47:37 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/21 23:36:11 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <mlx.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 

@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:55:38 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/20 16:04:49 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/21 23:36:03 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <mlx.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -98,8 +97,6 @@ typedef struct s_game
 }							t_game;
 
 void						ft_error_msg(char *str, t_game *game);
-void						ft_start_read(char **argv, int map_read,
-								char *map_help, t_game *game);
 
 int							ft_strlen(const char *s);
 char						*ft_strdup(const char *s1);

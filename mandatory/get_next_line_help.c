@@ -6,45 +6,11 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 20:19:35 by yhajji            #+#    #+#             */
-/*   Updated: 2025/02/03 17:17:26 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/02/21 23:35:47 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// size_t	ft_strlen(const char *s)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (!s)
-// 		return (0);
-// 	while (s[i] != '\0')
-// 	{
-// 		i++;
-// 	}
-// 	return (i);
-// }
-
-// char	*ft_strdup(const char *s1)
-// {
-// 	char	*ptr;
-// 	size_t	i;
-
-// 	i = 0;
-// 	if (!s1)
-// 		return (NULL);
-// 	ptr = malloc(sizeof(char) * (ft_strlen(s1) + 1));
-// 	if (!ptr)
-// 		return (NULL);
-// 	while (s1[i])
-// 	{
-// 		ptr[i] = s1[i];
-// 		i++;
-// 	}
-// 	ptr[i] = '\0';
-// 	return (ptr);
-// }
 
 void	*ft_memcpy_get_next_line(void *dest, const void *src, size_t n)
 {
