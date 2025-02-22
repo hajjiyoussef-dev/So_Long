@@ -68,5 +68,5 @@ For the bonus version:
 - **X11** and **Xext** libraries are required for graphics rendering.
 
 ## Author
-**Yhajji** - 42 Network
+**by -> Yhajji** - 42 Network
 
